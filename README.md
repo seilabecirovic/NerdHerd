@@ -13,7 +13,6 @@ II Šta nije urađeno:
 -Sve što zahtijeva korištenje biblioteka i framework-a
 
 III i IV Bugovi
----
 
 V File-ovi
 Folder MockUp 
