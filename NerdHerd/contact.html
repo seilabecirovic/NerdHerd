@@ -1,53 +1,59 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width" />
-      <title>NerdHerd</title>
-      <link rel="stylesheet" type="text/css" href="stil.css">
-      <link href="https://fonts.googleapis.com/css?family=Gentium+Basic" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-    </head>
-    <body>
-      <div class="stranica">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>NerdHerd</title>
+    <link rel="stylesheet" type="text/css" href="stil.css">
+    <link href="https://fonts.googleapis.com/css?family=Gentium+Basic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+</head>
+
+<body>
+    <div class="stranica">
         <div class="logo">
-          <div class="slika">
-              <img src="http://pichoster.net/images/2016/11/04/pozadina.jpg" alt="NerdHerd" />
-          </div>
-      </div>
-      <div class="meni">
+            <div class="slika">
+                <img src="http://pichoster.net/images/2016/11/04/pozadina.jpg" alt="NerdHerd" />
+            </div>
+        </div>
+        <div class="meni">
             <ul class="navigacija" id="mojanav">
-            <li><a href="index.html">Latest reviews</a></li>
-            <li>  <a href="allreview.html">All reviews </a></li>
-            <li><a href="addreview.html">Add a review</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-      </div>
-    <div class="glavne">
-      <div class="dodkont">
-        <form class="forma-kontakt" action="index.html" method="get">
-          <div class="unoskont">
-            <label>Name</label>
-            <input type="text" name="name" value=""><br>
-          </div>
-          <div class="unoskont">
-            <label>Page quality(1-10) </label>
-            <input type="range" name="kvalitet" min="1" max="10"><br>
-          </div>
-          <div class="unoskont">
-            <label>Email</label>
-            <input type="email" name="email" value=""><br>
-          </div>
-          <div class="unoskont">
-            <label>Text</label>
-            <textarea rows=5 maxlength="1000" name="Tekst"></textarea>
-          </div>
-          <input class="konbutton" type="submit" value="Send">
-        </form>
-      </div>
-      </div>
-  </div>
-  </body>
+                <li><a href="index.html">Latest reviews</a>
+                </li>
+                <li> <a href="allreview.html">All reviews </a>
+                </li>
+                <li><a href="addreview.html">Add a review</a>
+                </li>
+                <li><a href="about.html">About</a>
+                </li>
+                <li><a href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <div class="glavne">
+            <div class="dodkont">
+                <form class="forma-kontakt" action="index.html" method="get">
+                    <div class="unoskont">
+                        <label>Name</label>
+                        <input type="text" name="name" value="">
+                        <br>
+                    </div>
+                    <div class="unoskont">
+                        <label>Email</label>
+                        <input type="email" name="email" value="">
+                        <br>
+                    </div>
+                    <div class="unoskont">
+                        <label>Text</label>
+                        <textarea rows=5 maxlength="1000" name="Tekst"></textarea>
+                    </div>
+                    <input class="konbutton" type="submit" value="Send">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>

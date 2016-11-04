@@ -15,6 +15,8 @@ I Urađeno:
 
 -Izgled stranice je konzistentan, nisu pronađeni glitchevi i svi elementi su poravnati korištenjem pravila responzivnog dizajna
 
+-HTML i CSS su formatirani i validirani
+
 II Šta nije urađeno:
 
 -Sve što zahtijeva korištenje biblioteka i framework-a
