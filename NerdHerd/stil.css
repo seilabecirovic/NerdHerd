@@ -1,7 +1,9 @@
 body {
     background-color: black;
 }
+
 .stranica {
+    height: 100%;
     width: 90%;
     margin-top: 0;
     margin-left: 5%;
@@ -11,6 +13,7 @@ body {
     border: 0;
     float: left;
 }
+
 .logo {
     width: 100%;
     margin: auto;
@@ -18,6 +21,7 @@ body {
     float: left;
     height: 30%;
 }
+
 .slika {
     width: 100%;
     height: 100%;
@@ -25,6 +29,7 @@ body {
     padding: 0;
     float: left;
 }
+
 .slika>img {
     height: 100%;
     width: 100%;
@@ -40,6 +45,7 @@ body {
     color: #003366;
     text-align: center;
 }
+
 .meni {
     position: relative;
     margin: 0;
@@ -47,6 +53,7 @@ body {
     width: 100%;
     height: 20%;
 }
+
 .navigacija {
     float: left;
     width: 100%;
@@ -61,6 +68,7 @@ body {
     background-color: #421C52;
     list-style-type: none;
 }
+
 .navigacija>li {
     text-decoration: none;
     display: inline-block;
@@ -72,31 +80,37 @@ body {
     padding-right: 4%;
     padding-left: 4%;
 }
+
 .navigacija li a {
     text-decoration: none;
     font-family: 'Gentium Basic', sans-serif;
 }
+
 .navigacija li:hover {
     background-color: #996699;
     text-decoration: none;
 }
+
 .navigacija li a:link {
     color: silver;
     text-decoration: none;
 }
+
 .navigacija li a:visited {
     color: silver;
     text-decoration: none;
 }
+
 .navigacija li a:active {
     color: silver;
     text-decoration: none;
 }
+
 @media only screen and (max-device-width: 700px) {
-    ul.navigacija {
+    .navigacija {
         position: relative;
     }
-    ul.navigacija li {
+    .navigacija li {
         float: none;
         display: inline;
         font-size: 100%;
@@ -105,33 +119,55 @@ body {
         text-align: center;
     }
     .navigacija li:hover {
+        background-color: #996699;
         text-decoration: none;
     }
-    ul.navigacija li a {
+    .navigacija li a {
         display: block;
     }
-    div.bigel>a,
-    h2,
-    img {
-        font-size: 0.2em;
+    .element {
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 5%;
+        min-width: 96%;
+        padding: 0;
+        border: 0;
+        display: inline-block;
+        float: left;
     }
-    div.element>a,
-    h2,
-    img {
-        font-size: 0.2em;
+    .revslika {
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 5%;
+        min-width: 96%;
+        padding: 0;
+        border: 0;
+        display: inline-block;
+        float: left;
     }
-    div.tekstrev>h2 {
+    .tekstrev {
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 5%;
+        min-width: 96%;
+        padding: 0;
+        border: 0;
+        display: inline-block;
+        float: left;
+    }
+    .tekstrev>h2 {
         font-size: 80%;
     }
-    div.tekstrev>p {
+    .tekstrev>p {
         font-size: 80%;
     }
 }
+
 @media screen and (max-width: 700px) {
-    ul.navigacija {
+    .navigacija {
         position: relative;
     }
-    ul.navigacija li {
+    .navigacija li {
         float: none;
         display: inline;
         font-size: 100%;
@@ -141,29 +177,51 @@ body {
     }
     .navigacija li:hover {
         text-decoration: none;
+        background-color: #996699;
     }
-    ul.navigacija li a {
+    .navigacija li a {
         display: block;
     }
-    div.bigel>a,
-    h2,
-    img {
-        font-size: 0.2em;
+    .element {
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 5%;
+        min-width: 96%;
+        padding: 0;
+        border: 0;
+        display: inline-block;
+        float: left;
     }
-    div.element>a,
-    h2,
-    img {
-        font-size: 0.2em;
+    .revslika {
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 5%;
+        min-width: 96%;
+        padding: 0;
+        border: 0;
+        display: inline-block;
+        float: left;
     }
-    div.tekstrev>h2 {
+    .tekstrev {
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 5%;
+        min-width: 96%;
+        padding: 0;
+        border: 0;
+        display: inline-block;
+        float: left;
+    }
+    .tekstrev>h2 {
         font-size: 80%;
     }
-    div.tekstrev>p {
+    .tekstrev>p {
         font-size: 80%;
     }
 }
+
 .glavne {
-    background-color: silver;
+    background-color: #b793b7;
     width: 100%;
     float: left;
     margin: 0;
@@ -172,6 +230,7 @@ body {
     height: 100%;
     box-sizing: border-box;
 }
+
 .red {
     width: 100%;
     float: left;
@@ -180,70 +239,53 @@ body {
     border: 0;
     height: 40%;
 }
+
 .element {
-    width: 26%;
+    width: 30%;
     float: left;
-    margin: 0;
-    padding: 2%;
-    padding-top: 5%;
+    padding: 0;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-top: 5%;
     border: 0;
     height: 25%;
 }
-.bigel {
-    width: 36%;
-    float: left;
-    margin: 0;
-    padding: 2%;
-    border: 0;
-    height: 30%;
+
+.element:first-child {
+    margin-left: 2%;
 }
-.bigel> a,
-img,
-h2 {
+
+.element:last-child {
+    margin-right: 2%;
+}
+
+.element>a, img, h2 {
     height: 100%;
     text-decoration: none;
     width: 100%;
 }
-.element> a,
-img,
-h2 {
-    height: 100%;
-    text-decoration: none;
-    width: 100%;
-}
-.bigel a:link {
-    color: #421C52;
-    text-decoration: none;
-}
-.bigel a:visited {
-    color: #421C52;
-    text-decoration: none;
-}
-.bigel a:active {
-    color: #421C52;
-    text-decoration: none;
-}
-.bigel a:hover {
-    color: #421C52;
-    text-decoration: none;
-}
+
 .element a:link {
     color: #421C52;
     text-decoration: none;
 }
+
 .element a:visited {
     color: #421C52;
     text-decoration: none;
 }
+
 .element a:active {
     color: #421C52;
     text-decoration: none;
 }
+
 .element a:hover {
     color: #421C52;
     text-decoration: none;
 }
-.element> img {
+
+.element>img {
     font-family: 'Lora';
     margin: 0;
     padding: 0;
@@ -251,32 +293,17 @@ h2 {
     color: #421C52;
     text-align: center;
 }
+
 .element a h2 {
     font-family: 'Lora';
-    margin: 0;
-    padding-top: 3%;
-    border: 0;
-    font-size: 200%;
-    color: #421C52;
-    text-align: center;
-}
-.bigel> img {
-    font-family: 'Lora';
-    margin: 0;
     padding: 0;
-    border: 0;
-    color: #421C52;
-    text-align: center;
-}
-.bigel a h2 {
-    font-family: 'Lora';
-    margin: 0;
-    padding-top: 3%;
+    margin-top: 3%;
     border: 0;
     font-size: 200%;
     color: #421C52;
     text-align: center;
 }
+
 .revred {
     width: 100%;
     float: left;
@@ -285,6 +312,7 @@ h2 {
     border: 0;
     height: 40%;
 }
+
 .revslika {
     width: 36%;
     float: left;
@@ -294,7 +322,8 @@ h2 {
     border: 0;
     height: 25%;
 }
-.revslika> img {
+
+.revslika>img {
     width: 100%;
     height: 100%;
     font-family: 'Lora';
@@ -305,9 +334,11 @@ h2 {
     color: #421C52;
     text-align: center;
 }
+
 .revslika:hover img {
     transform: scale(1.05);
 }
+
 .tekstrev {
     width: 56%;
     float: left;
@@ -315,36 +346,41 @@ h2 {
     padding: 2%;
     padding-top: 5%;
     border: 0;
-    height: 30%;
+    height: 25%;
 }
-.tekstrev> a,
-h2 {
+
+.tekstrev>a, h2 {
     font-family: 'Lora';
     margin: 0;
     padding: 0;
     border: 0;
     padding-top: 2%;
-    font-size: 110%;
+    font-size: 150%;
     color: #421C52;
     text-align: justify;
     ;
 }
+
 .tekstrev a:link {
     color: #421C52;
     text-decoration: none;
 }
+
 .tekstrev a:visited {
     color: #421C52;
     text-decoration: none;
 }
+
 .tekstrev a:active {
     color: #421C52;
     text-decoration: none;
 }
+
 .tekstrev a:hover {
     color: #421C52;
     text-decoration: none;
 }
+
 .tekstrev>p {
     font-family: 'Noto Serif';
     margin: 0;
@@ -354,17 +390,19 @@ h2 {
     color: #421C52;
     text-align: justify;
 }
+
 .dodrev {
     font-family: 'Noto Serif';
     width: 60%;
     float: left;
     margin-left: 20%;
-    margin-top: 5%;
+    margin-top: 2%;
     margin-right: 20%;
     border: 0;
     padding: 0;
     height: 80%;
 }
+
 .unosrev {
     align-items: baseline;
     display: block;
@@ -373,12 +411,15 @@ h2 {
     padding: 0;
     border: 0;
 }
+
 .unosrev>label {
     display: block;
     font-size: 150%;
     font-weight: bold;
+    margin-top: 3%;
     color: #421C52;
 }
+
 .unosrev>input[type="text"] {
     padding-top: 1%;
     padding-bottom: 1%;
@@ -387,6 +428,7 @@ h2 {
     width: 100%;
     border: 1px solid black;
 }
+
 .unosrev>input[type="email"] {
     padding-top: 1%;
     padding-bottom: 1%;
@@ -395,6 +437,7 @@ h2 {
     width: 100%;
     border: 1px solid black;
 }
+
 .unosrev>textarea {
     width: 100%;
     border: 1px solid black;
@@ -405,6 +448,7 @@ h2 {
     font-family: 'Noto Serif';
     overflow: hidden;
 }
+
 .napomene {
     width: 100%;
     float: left;
@@ -413,6 +457,7 @@ h2 {
     padding: 0;
     height: 20%;
 }
+
 .napomene>h3 {
     width: 96%;
     float: left;
@@ -423,14 +468,17 @@ h2 {
     font-family: 'Noto Serif';
     color: #421C52;
 }
+
 .revbutton {
     float: left;
     margin: 0;
+    margin-top: 3%;
     width: 100%;
     font-size: 120%;
     font-family: 'Noto Serif';
     color: #421C52;
 }
+
 .picbutton {
     margin-top: 1%;
     margin-bottom: 1%;
@@ -443,6 +491,7 @@ h2 {
     color: #421C52;
     width: 70%;
 }
+
 .uploadbutton {
     margin-top: 1%;
     margin-bottom: 1%;
@@ -451,17 +500,19 @@ h2 {
     font-family: 'Noto Serif';
     color: #421C52;
 }
+
 .dodkont {
     font-family: 'Noto Serif';
     width: 60%;
     float: left;
     margin-left: 20%;
-    margin-top: 5%;
+    margin-top: 2%;
     margin-right: 20%;
     border: 0;
     padding: 0;
     height: 80%;
 }
+
 .unoskont {
     align-items: baseline;
     display: block;
@@ -470,12 +521,15 @@ h2 {
     padding: 0;
     border: 0;
 }
+
 .unoskont>label {
     display: block;
+    margin-top: 3%;
     font-size: 150%;
     font-weight: bold;
     color: #421C52;
 }
+
 .unoskont>input[type="text"] {
     padding: 0%;
     margin: 0;
@@ -485,6 +539,7 @@ h2 {
     width: 100%;
     border: 1px solid black;
 }
+
 .unoskont>input[type="email"] {
     padding: 0;
     margin: 0;
@@ -494,6 +549,7 @@ h2 {
     width: 100%;
     border: 1px solid black;
 }
+
 .unoskont>textarea {
     width: 100%;
     border: 1px solid black;
@@ -505,6 +561,7 @@ h2 {
     font-family: 'Noto Serif';
     overflow: hidden;
 }
+
 .konbutton {
     float: left;
     margin-bottom: 5%;
@@ -512,7 +569,9 @@ h2 {
     font-size: 120%;
     font-family: 'Noto Serif';
     color: #421C52;
+    margin-top: 3%;
 }
+
 .omeni {
     float: left;
     padding: 5%;
@@ -522,12 +581,13 @@ h2 {
     margin: 0;
     color: #421C52;
 }
-.omeni>h1,
-p {
+
+.omeni>h1, p {
     margin: 0;
     border: 0;
     width: 100%;
 }
+
 .titlerev {
     float: left;
     padding: 2%;
@@ -537,11 +597,13 @@ p {
     margin: 0;
     color: #421C52;
 }
+
 .titlerev>h1 {
     margin: 0;
     border: 0;
     width: 100%;
 }
+
 .par {
     float: left;
     padding: 2%;
@@ -552,12 +614,14 @@ p {
     border: 0;
     color: #421C52;
 }
+
 .par>p {
     margin: 0;
     border: 0;
     width: 100%;
     font-family: "Noto Serif";
 }
+
 .revpic {
     float: left;
     padding-left: 20%;
@@ -567,9 +631,11 @@ p {
     border: 0;
     color: #421C52;
 }
+
 .revpic>img {
     width: 100%;
 }
+
 .komentar {
     font-family: 'Noto Serif';
     width: 60%;
@@ -581,6 +647,7 @@ p {
     padding: 0;
     height: 80%;
 }
+
 .unoskoment {
     align-items: baseline;
     display: block;
@@ -589,18 +656,22 @@ p {
     padding: 0;
     border: 0;
 }
+
 .unoskoment>label {
     display: block;
     font-size: 150%;
     font-weight: bold;
+    margin-top: 3%;
     color: #421C52;
 }
+
 .forma-komentar>h3 {
     display: block;
     font-size: 150%;
     font-weight: bold;
     color: #421C52;
 }
+
 .unoskoment>input[type="text"] {
     padding: 0%;
     margin: 0;
@@ -610,6 +681,7 @@ p {
     width: 100%;
     border: 1px solid black;
 }
+
 .unoskoment>textarea {
     width: 100%;
     border: 1px solid black;
@@ -621,14 +693,16 @@ p {
     font-family: 'Noto Serif';
     overflow: hidden;
 }
+
 .unoskoment>input[type="range"] {
     padding: 0;
     margin: 0;
     padding-top: 1%;
-    padding-bottom: 1%;
     position: relative;
     width: 100%;
+    margin-top: 3%;
 }
+
 .komentbutton {
     float: left;
     margin-bottom: 5%;
@@ -636,4 +710,5 @@ p {
     font-size: 120%;
     font-family: 'Noto Serif';
     color: #421C52;
+    margin-top: 3%;
 }
