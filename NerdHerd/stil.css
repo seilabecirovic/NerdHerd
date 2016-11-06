@@ -106,6 +106,184 @@ body {
     text-decoration: none;
 }
 
+.glavne {
+    background-color: #b793b7;
+    width: 100%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.red {
+    width: 100%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 40%;
+}
+
+.red:last-child {
+    margin-bottom: 5%;
+}
+
+.element {
+    width: 30%;
+    float: left;
+    padding: 0;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-top: 5%;
+    border: 0;
+    height: inherit;
+    display: inline-block;
+}
+
+.element:first-child {
+    margin-left: 2%;
+}
+
+.element:last-child {
+    margin-right: 2%;
+}
+
+.element>a, h2 {
+    height: 100%;
+    text-decoration: none;
+    width: 100%;
+}
+
+.element a:link {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.element a:visited {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.element a:active {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.element a:hover {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.element>img {
+    font-family: 'Lora';
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+    color: #421C52;
+    text-align: center;
+    max-width: 100%;
+}
+
+.element a h2 {
+    font-family: 'Lora';
+    padding: 0;
+    margin-top: 3%;
+    display: block;
+    border: 0;
+    font-size: 200%;
+    color: #421C52;
+    text-align: center;
+}
+
+.revred {
+    width: 100%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 40%;
+}
+
+.revred:last-child {
+    margin-bottom: 5%;
+}
+
+.revslika {
+    width: 36%;
+    float: left;
+    margin: 0;
+    padding: 2%;
+    padding-top: 5%;
+    border: 0;
+    height: 25%;
+}
+
+.revslika>img {
+    width: 100%;
+    height: 100%;
+    font-family: 'Lora';
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 300%;
+    color: #421C52;
+    text-align: center;
+}
+
+.tekstrev {
+    width: 56%;
+    float: left;
+    margin: 0;
+    padding: 2%;
+    padding-top: 5%;
+    border: 0;
+    height: 25%;
+}
+
+.tekstrev>a, h2 {
+    font-family: 'Lora';
+    margin: 0;
+    padding: 0;
+    border: 0;
+    padding-top: 2%;
+    font-size: 150%;
+    color: #421C52;
+    text-align: justify;
+    ;
+}
+
+.tekstrev a:link {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.tekstrev a:visited {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.tekstrev a:active {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.tekstrev a:hover {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.tekstrev>p {
+    font-family: 'Noto Serif';
+    margin: 0;
+    padding-top: 3%;
+    border: 0;
+    font-size: 100%;
+    color: #421C52;
+    text-align: justify;
+}
+
 @media only screen and (max-device-width: 700px) {
     .navigacija {
         position: relative;
@@ -220,177 +398,6 @@ body {
     }
 }
 
-.glavne {
-    background-color: #b793b7;
-    width: 100%;
-    float: left;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    height: 100%;
-    box-sizing: border-box;
-}
-
-.red {
-    width: 100%;
-    float: left;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    height: 40%;
-}
-
-.element {
-    width: 30%;
-    float: left;
-    padding: 0;
-    margin-left: 1.5%;
-    margin-right: 1.5%;
-    margin-top: 5%;
-    border: 0;
-    height: 25%;
-}
-
-.element:first-child {
-    margin-left: 2%;
-}
-
-.element:last-child {
-    margin-right: 2%;
-}
-
-.element>a, img, h2 {
-    height: 100%;
-    text-decoration: none;
-    width: 100%;
-}
-
-.element a:link {
-    color: #421C52;
-    text-decoration: none;
-}
-
-.element a:visited {
-    color: #421C52;
-    text-decoration: none;
-}
-
-.element a:active {
-    color: #421C52;
-    text-decoration: none;
-}
-
-.element a:hover {
-    color: #421C52;
-    text-decoration: none;
-}
-
-.element>img {
-    font-family: 'Lora';
-    margin: 0;
-    padding: 0;
-    border: 0;
-    color: #421C52;
-    text-align: center;
-}
-
-.element a h2 {
-    font-family: 'Lora';
-    padding: 0;
-    margin-top: 3%;
-    border: 0;
-    font-size: 200%;
-    color: #421C52;
-    text-align: center;
-}
-
-.revred {
-    width: 100%;
-    float: left;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    height: 40%;
-}
-
-.revslika {
-    width: 36%;
-    float: left;
-    margin: 0;
-    padding: 2%;
-    padding-top: 5%;
-    border: 0;
-    height: 25%;
-}
-
-.revslika>img {
-    width: 100%;
-    height: 100%;
-    font-family: 'Lora';
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 300%;
-    color: #421C52;
-    text-align: center;
-}
-
-.revslika:hover img {
-    transform: scale(1.05);
-}
-
-.tekstrev {
-    width: 56%;
-    float: left;
-    margin: 0;
-    padding: 2%;
-    padding-top: 5%;
-    border: 0;
-    height: 25%;
-}
-
-.tekstrev>a, h2 {
-    font-family: 'Lora';
-    margin: 0;
-    padding: 0;
-    border: 0;
-    padding-top: 2%;
-    font-size: 150%;
-    color: #421C52;
-    text-align: justify;
-    ;
-}
-
-.tekstrev a:link {
-    color: #421C52;
-    text-decoration: none;
-}
-
-.tekstrev a:visited {
-    color: #421C52;
-    text-decoration: none;
-}
-
-.tekstrev a:active {
-    color: #421C52;
-    text-decoration: none;
-}
-
-.tekstrev a:hover {
-    color: #421C52;
-    text-decoration: none;
-}
-
-.tekstrev>p {
-    font-family: 'Noto Serif';
-    margin: 0;
-    padding-top: 3%;
-    border: 0;
-    font-size: 100%;
-    color: #421C52;
-    text-align: justify;
-}
-
 .dodrev {
     font-family: 'Noto Serif';
     width: 60%;
@@ -425,7 +432,7 @@ body {
     padding-bottom: 1%;
     margin: 0;
     position: relative;
-    width: 100%;
+    width: 99.4%;
     border: 1px solid black;
 }
 
@@ -434,15 +441,16 @@ body {
     padding-bottom: 1%;
     margin: 0;
     position: relative;
-    width: 100%;
+    width: 99.4%;
     border: 1px solid black;
 }
 
 .unosrev>textarea {
-    width: 100%;
+    width: 99.4%;
     border: 1px solid black;
     position: relative;
     margin: 0;
+    padding: 0;
     padding-top: 1%;
     padding-bottom: 1%;
     font-family: 'Noto Serif';
@@ -536,7 +544,7 @@ body {
     padding-top: 1%;
     padding-bottom: 1%;
     position: relative;
-    width: 100%;
+    width: 99.4%;
     border: 1px solid black;
 }
 
@@ -546,12 +554,12 @@ body {
     padding-top: 1%;
     padding-bottom: 1%;
     position: relative;
-    width: 100%;
+    width: 99.4%;
     border: 1px solid black;
 }
 
 .unoskont>textarea {
-    width: 100%;
+    width: 99.4%;
     border: 1px solid black;
     position: relative;
     margin: 0;
@@ -678,12 +686,12 @@ body {
     padding-top: 1%;
     padding-bottom: 1%;
     position: relative;
-    width: 100%;
+    width: 99.4%;
     border: 1px solid black;
 }
 
 .unoskoment>textarea {
-    width: 100%;
+    width: 99.4%;
     border: 1px solid black;
     position: relative;
     margin: 0;
@@ -699,7 +707,7 @@ body {
     margin: 0;
     padding-top: 1%;
     position: relative;
-    width: 100%;
+    width: 99.4%;
     margin-top: 3%;
 }
 
