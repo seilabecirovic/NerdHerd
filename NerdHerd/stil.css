@@ -42,7 +42,7 @@ body {
     padding: 0;
     border: 0;
     font-size: 500%;
-    color: #003366;
+    color: #b793b7;
     text-align: center;
 }
 
@@ -184,6 +184,7 @@ body {
     color: #421C52;
     text-align: center;
     max-width: 100%;
+	  width: 100%;
 }
 
 .element a h2 {

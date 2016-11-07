@@ -30,15 +30,27 @@ Folder MockUp
 
 -index - mockup glavne stranice
 
+-indexmob - mockup glavne stranice za mobitel
+
 -allreviews - mockup stranice svih recenzija, kritika
+
+-allreviewsmob - mockup stranice svih recenzija, kritika za mobitel
 
 -addreview - mockup stranice dodavanja kritike
 
+-addreviewmob - mockup stranice dodavanja kritike za mobitel
+
 -about - mockup stranice o stranici 
+
+-aboutmob - mockup stranice o stranici za mobitel
 
 -contact - mockup stranice za kontaktiranje vlasnika stranice
 
+-contactmob - mockup stranice za kontaktiranje vlasnika stranice za mobitel
+
 -review - mockup stranice s kritikom
+
+-reviewmob - mockup stranice s kritikom za mobitel
 
 
 Folder NerdHerd
