@@ -1,37 +1,4 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width" />
-    <title>NerdHerd</title>
-    <link rel="stylesheet" type="text/css" href="stil.css">
-    <link href="https://fonts.googleapis.com/css?family=Gentium+Basic" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-</head>
-
-<body>
-    <div class="stranica">
-        <div class="logo">
-            <div class="slika">
-                <img src="http://pichoster.net/images/2016/11/04/pozadina.jpg" alt="NerdHerd" />
-            </div>
-        </div>
-        <div class="meni">
-            <ul class="navigacija" id="mojanav">
-                <li><a href="index.html">Latest reviews</a>
-                </li>
-                <li><a href="allreview.html">All reviews </a>
-                </li>
-                <li><a href="addreview.html">Add a review</a>
-                </li>
-                <li><a href="about.html">About</a>
-                </li>
-                <li><a href="contact.html">Contact</a>
-                </li>
-            </ul>
-        </div>
         <div class="glavne">
             <div class="titlerev">
                 <h1>Westworld</h1>
@@ -42,8 +9,18 @@
                 </p>
             </div>
             <div class="revpic">
-                <img src="http://i.lv3.hbo.com/assets/images/series/westworld/episodes/media-blast/160819-westworld-s1-blast-07-1280.jpg" alt="Review" />
-            </div>
+                <img class="carousel fade" onclick="enlargeImage(this)" src="http://i.lv3.hbo.com/assets/images/series/westworld/episodes/media-blast/160819-westworld-s1-blast-07-1280.jpg" alt="Review" />
+                <img class="carousel fade" onclick="enlargeImage(this)" src="https://s.yimg.com/uu/api/res/1.2/UI5BpO8MK6MMeFq7.ln7Rg--/aD03MjA7dz0xMjgwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/uu/api/res/1.2/_0FaLlWmbB9v6lkydKSkhg--/aD03MjA7dz0xMjgwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/creatr-images/GLB/2016-10-03/f024f7e0-8937-11e6-818b-75dbca047757_SuperFanTV_s2016e193C_NIGHT_Westworld_Thumb.png" alt="Review" />
+                 <img class="carousel fade" onclick="enlargeImage(this)" src="http://media.comicbook.com/uploads1/2015/08/westworld-trailer-147031-1280x0.jpg" alt="Review" />
+                 <span class="buttonLijevo" onclick="CarouselFun(-1)">&#10094;</span>
+                 <span class="buttonDesno" onclick="CarouselFun(1)">&#10095;</span>
+                 <div class="dots">
+                 <span class="dot" onclick="trenutniCarousel(1)"></span>
+                 <span class="dot" onclick="trenutniCarousel(2)"></span>
+                 <span class="dot" onclick="trenutniCarousel(3)"></span>
+               </div>
+          </div>
+
             <div class="par">
                 <p>
                     “Westworld” is television’s next big game-changer, a great, multilayered tapestry of action and unexpected analysis made hypnotic by creators Jonathan Nolan and Lisa Joy and a cast that includes Anthony Hopkins, Jeffrey Wright, James Marsden, Ed Harris,
@@ -74,7 +51,3 @@
                 </form>
             </div>
         </div>
-    </div>
-</body>
-
-</html>

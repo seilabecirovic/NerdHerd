@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <script src="nerdherd.js" charset="utf-8"></script>
     <div class="stranica">
         <div class="logo">
             <div class="slika">
@@ -20,99 +21,23 @@
         </div>
         <div class="meni">
             <ul class="navigacija" id="mojanav">
-                <li><a href="index.html">Latest reviews</a>
-                </li>
-                <li><a href="allreview.html">All reviews </a>
-                </li>
-                <li><a href="addreview.html">Add a review</a>
-                </li>
-                <li><a href="about.html">About</a>
-                </li>
-                <li><a href="contact.html">Contact</a>
-                </li>
+                <li onclick='funkcijaUcitanja("latestreview.html")'>Latest reviews</li>
+                <li onclick='funkcijaUcitanja("allreview.html")'>All reviews </li>
+                <li onclick='funkcijaUcitanja("addreview.html")'>Add a review</li>
+                <li onclick='funkcijaUcitanja("about.html")'>About</li>
+                <li onclick='funkcijaUcitanja("contact.html")'>Contact</li>
+                <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>
-        <div class="glavne">
-            <div class="red">
-                <div class="element">
-                    <img src="http://www.kafepauza.mk/wp-content/uploads/2016/10/0-tv-serija-zapaden-svet-westworld-www.kafepauza.mk_-400x230.jpg" alt="Review" />
-                    <a href="review.html">
-                        <h2>
-          Westworld
-        </h2>
-                    </a>
-                </div>
-                <div class="element">
-                    <img src="http://www.vishmax.com/en/innovattive-cms/themes/themax-theme-2015/images/no-image-found.gif" alt="Review" />
-                    <a href="">
-                        <h2>
-            Title
-          </h2>
-                    </a>
-                </div>
-                <div class="element">
-                    <img src="http://www.vishmax.com/en/innovattive-cms/themes/themax-theme-2015/images/no-image-found.gif" alt="Review" />
-                    <a href="">
-                        <h2>
-            Title
-          </h2>
-                    </a>
-                </div>
-            </div>
-            <div class="red">
-                <div class="element">
-                    <img src="http://www.vishmax.com/en/innovattive-cms/themes/themax-theme-2015/images/no-image-found.gif" alt="Review" />
-                    <a href="">
-                        <h2>
-            Title
-          </h2>
-                    </a>
-                </div>
-                <div class="element">
-                    <img src="http://www.vishmax.com/en/innovattive-cms/themes/themax-theme-2015/images/no-image-found.gif" alt="Review" />
-                    <a href="">
-                        <h2>
-                      Title
-                    </h2>
-                    </a>
-                </div>
-                <div class="element">
-                    <img src="http://www.vishmax.com/en/innovattive-cms/themes/themax-theme-2015/images/no-image-found.gif" alt="Review" />
-                    <a href="">
-                        <h2>
-                      Title
-                    </h2>
-                    </a>
-                </div>
-            </div>
-            <div class="red">
-                <div class="element">
-                    <img src="http://www.vishmax.com/en/innovattive-cms/themes/themax-theme-2015/images/no-image-found.gif" alt="Review" />
-                    <a href="">
-                        <h2>
-                      Title
-                    </h2>
-                    </a>
-                </div>
-                <div class="element">
-                    <img src="http://www.vishmax.com/en/innovattive-cms/themes/themax-theme-2015/images/no-image-found.gif" alt="Review" />
-                    <a href="">
-                        <h2>
-                      Title
-                    </h2>
-                    </a>
-                </div>
-                <div class="element">
-                    <img src="http://www.vishmax.com/en/innovattive-cms/themes/themax-theme-2015/images/no-image-found.gif" alt="Review" />
-                    <a href="">
-                        <h2>
-                      Title
-                    </h2>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <div id="polje">
+          
     </div>
+  </div>
+  <div id="myModal" class="modal" onclick="closeButton()">
+    <span class="close" onclick="closeButton()">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
 </body>
 
 </html>

@@ -55,7 +55,6 @@ body {
 }
 
 .navigacija {
-    float: left;
     width: 100%;
     padding-top: 2%;
     padding-left: 2%;
@@ -77,35 +76,81 @@ body {
     font-family: 'Gentium Basic', sans-serif;
     color: silver;
     font-size: 160%;
+    transition: 0.3s;
     padding-right: 4%;
     padding-left: 4%;
 }
-
-.navigacija li a {
-    text-decoration: none;
-    font-family: 'Gentium Basic', sans-serif;
+.navigacija li.icon
+{
+  display: none;
 }
 
 .navigacija li:hover {
     background-color: #996699;
-    text-decoration: none;
 }
 
-.navigacija li a:link {
-    color: silver;
-    text-decoration: none;
+.polje {
+    background-color: #b793b7;
+    width: 100%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
 }
 
-.navigacija li a:visited {
-    color: silver;
-    text-decoration: none;
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
 }
 
-.navigacija li a:active {
-    color: silver;
-    text-decoration: none;
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}.modal-content {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
 }
 
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
 .glavne {
     background-color: #b793b7;
     width: 100%;
@@ -149,31 +194,19 @@ body {
     margin-right: 2%;
 }
 
-.element>a, h2 {
+.element> h2 {
     height: 100%;
-    text-decoration: none;
     width: 100%;
+    color: #421C52;
+    font-family: 'Lora';
+    padding: 0;
+    margin-top: 3%;
+    border: 0;
+    font-size: 200%;
+    text-align: center;
 }
 
-.element a:link {
-    color: #421C52;
-    text-decoration: none;
-}
 
-.element a:visited {
-    color: #421C52;
-    text-decoration: none;
-}
-
-.element a:active {
-    color: #421C52;
-    text-decoration: none;
-}
-
-.element a:hover {
-    color: #421C52;
-    text-decoration: none;
-}
 
 .element>img {
     font-family: 'Lora';
@@ -187,16 +220,7 @@ body {
 	  width: 100%;
 }
 
-.element a h2 {
-    font-family: 'Lora';
-    padding: 0;
-    margin-top: 3%;
-    display: block;
-    border: 0;
-    font-size: 200%;
-    color: #421C52;
-    text-align: center;
-}
+
 
 .revred {
     width: 100%;
@@ -243,7 +267,7 @@ body {
     height: 25%;
 }
 
-.tekstrev>a, h2 {
+.tekstrev>h2 {
     font-family: 'Lora';
     margin: 0;
     padding: 0;
@@ -252,28 +276,9 @@ body {
     font-size: 150%;
     color: #421C52;
     text-align: justify;
-    ;
+
 }
 
-.tekstrev a:link {
-    color: #421C52;
-    text-decoration: none;
-}
-
-.tekstrev a:visited {
-    color: #421C52;
-    text-decoration: none;
-}
-
-.tekstrev a:active {
-    color: #421C52;
-    text-decoration: none;
-}
-
-.tekstrev a:hover {
-    color: #421C52;
-    text-decoration: none;
-}
 
 .tekstrev>p {
     font-family: 'Noto Serif';
@@ -289,21 +294,46 @@ body {
     .navigacija {
         position: relative;
     }
-    .navigacija li {
-        float: none;
-        display: inline;
-        font-size: 100%;
-        padding: 0;
-        margin: 0;
-        text-align: center;
+  .navigacija li:not(:first-child) {display: none;}
+  .navigacija li:first-child {width: 80%;}
+ .navigacija li.icon {
+   float: right;
+   display: inline-block;
+   position: absolute;
+   right: 2%;
+   top: 10%;
+   width: 10%;
+   padding: 0;
+   margin: 0;
+   text-align: center;
     }
     .navigacija li:hover {
         background-color: #996699;
         text-decoration: none;
     }
-    .navigacija li a {
-        display: block;
+    .navigacija li.icon a{
+      padding: 0;
+      border:0;
+      margin: 0;
+      font-size: 80%;
+        width: 100%;
     }
+  .navigacija.responsive {
+    position: relative;
+  }
+ .navigacija.responsive li {
+   float: none;
+   display: inline-block;
+   width: 80%;
+
+ }
+ .navigacija.responsive li.icon {
+  position: absolute;;
+  right: 2%;
+  top: 5%;
+  width: 10%;
+  float: right;
+ }
     .element {
         margin-left: 2%;
         margin-right: 2%;
@@ -340,27 +370,58 @@ body {
     .tekstrev>p {
         font-size: 80%;
     }
+    .modal-content {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 700px) {
-    .navigacija {
-        position: relative;
-    }
-    .navigacija li {
-        float: none;
-        display: inline;
-        font-size: 100%;
-        padding: 0;
-        margin: 0;
-        text-align: center;
-    }
-    .navigacija li:hover {
-        text-decoration: none;
-        background-color: #996699;
-    }
-    .navigacija li a {
-        display: block;
-    }
+  .navigacija {
+      position: relative;
+  }
+.navigacija li:not(:first-child) {display: none;}
+.navigacija li:first-child {width: 80%;}
+.navigacija li.icon {
+  float: right;
+  display: inline-block;
+  position: absolute;
+  right: 2%;
+  top: 10%;
+  width: 10%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  }
+  .navigacija li:hover {
+      background-color: #996699;
+      text-decoration: none;
+  }
+  .navigacija li.icon a{
+    padding: 0;
+    border:0;
+    margin: 0;
+    font-size: 80%;
+    width: 100%;
+  }
+.navigacija.responsive {
+  position: relative;
+}
+
+.navigacija.responsive li {
+ float: none;
+ display: inline-block;
+ width: 80%;
+}
+.navigacija.responsive li.icon {
+ position: absolute;;
+ right: 2%;
+ top: 5%;
+ width: 10%;
+ float: right;
+}
+.modal-content {
+    width: 100%;
+}
     .element {
         margin-left: 2%;
         margin-right: 2%;
@@ -632,17 +693,21 @@ body {
 }
 
 .revpic {
+    position: relative;
     float: left;
-    padding-left: 20%;
-    padding-right: 20%;
+    margin-left: 20%;
+    margin-right: 20%;
     width: 60%;
-    margin: 0;
+    padding: 0;
     border: 0;
     color: #421C52;
 }
 
 .revpic>img {
     width: 100%;
+}
+.revpic>img:not(:first-child) {
+  display: none;
 }
 
 .komentar {
@@ -720,4 +785,79 @@ body {
     font-family: 'Noto Serif';
     color: #421C52;
     margin-top: 3%;
+}
+
+.buttonLijevo {
+    position: absolute;
+    top: 45%;
+    font-size: 110%;
+    left: 2%;
+    color: #f1f1f1;
+    font-weight: bold;
+    transition: 0.3s;
+    background-color: transparent;
+    cursor:pointer
+}
+
+.buttonLijevo:hover,
+.buttonLijevo:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+.buttonDesno {
+    position: absolute;
+    top: 45%;
+    right: 2%;
+    color: #f1f1f1;
+    font-size: 110%;
+    font-weight: bold;
+    transition: 0.3s;
+  background-color: transparent;
+  cursor:pointer
+}
+
+.buttonDesno:hover,
+.buttonDesno:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+.dots{
+  position: absolute;
+  text-align: center;
+  bottom: 2%;
+  left:45%;
+}
+.dot {
+
+  cursor:pointer;
+  height: 13px;
+  width: 13px;
+  margin: 0 2px;
+  background-color:  #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color:  #717171;
+}
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }
