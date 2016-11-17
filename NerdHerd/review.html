@@ -31,7 +31,7 @@
                 </p>
             </div>
             <div class="komentar">
-                <form class="forma-komentar" action="index.html" method="get">
+                <form class="forma-komentar" action="#" onsubmit="return unosKom()" method="post">
                     <h3>Comment</h3>
                     <div class="unoskoment">
                         <label>Name</label>
@@ -47,6 +47,9 @@
                         <label>Text</label>
                         <textarea rows=3 maxlength="1000" name="Tekst"></textarea>
                     </div>
+                    <div class="unoskoment">
+                     <ul class="greska"></ul>
+                   </div>
                     <input class="komentbutton" type="submit" value="Send">
                 </form>
             </div>
