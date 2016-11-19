@@ -80,9 +80,9 @@ body {
     padding-right: 4%;
     padding-left: 4%;
 }
-.navigacija li.icon
-{
-  display: none;
+
+.navigacija li.icon {
+    display: none;
 }
 
 .navigacija li:hover {
@@ -99,7 +99,6 @@ body {
     box-sizing: border-box;
 }
 
-
 .modal {
     display: none;
     position: fixed;
@@ -110,8 +109,8 @@ body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .modal-content {
@@ -119,20 +118,31 @@ body {
     display: block;
     width: 80%;
     max-width: 700px;
-}.modal-content {
+}
+
+.modal-content {
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
     animation-duration: 0.6s;
 }
+
 @-webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)}
-    to {-webkit-transform:scale(1)}
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
 }
 
 @keyframes zoom {
-    from {transform:scale(0)}
-    to {transform:scale(1)}
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
 }
 
 .close {
@@ -145,12 +155,12 @@ body {
     transition: 0.3s;
 }
 
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
 }
+
 .glavne {
     background-color: #b793b7;
     width: 100%;
@@ -194,7 +204,7 @@ body {
     margin-right: 2%;
 }
 
-.element> h2 {
+.element>h2 {
     height: 100%;
     width: 100%;
     color: #421C52;
@@ -206,8 +216,6 @@ body {
     text-align: center;
 }
 
-
-
 .element>img {
     font-family: 'Lora';
     margin: 0;
@@ -217,10 +225,8 @@ body {
     color: #421C52;
     text-align: center;
     max-width: 100%;
-	  width: 100%;
+    width: 100%;
 }
-
-
 
 .revred {
     width: 100%;
@@ -276,9 +282,7 @@ body {
     font-size: 150%;
     color: #421C52;
     text-align: justify;
-
 }
-
 
 .tekstrev>p {
     font-family: 'Noto Serif';
@@ -294,46 +298,50 @@ body {
     .navigacija {
         position: relative;
     }
-  .navigacija li:not(:first-child) {display: none;}
-  .navigacija li:first-child {width: 80%;}
- .navigacija li.icon {
-   float: right;
-   display: inline-block;
-   position: absolute;
-   right: 2%;
-   top: 10%;
-   width: 10%;
-   padding: 0;
-   margin: 0;
-   text-align: center;
+    .navigacija li:not(:first-child) {
+        display: none;
+    }
+    .navigacija li:first-child {
+        width: 80%;
+    }
+    .navigacija li.icon {
+        float: right;
+        display: inline-block;
+        position: absolute;
+        right: 2%;
+        top: 10%;
+        width: 10%;
+        padding: 0;
+        margin: 0;
+        text-align: center;
     }
     .navigacija li:hover {
         background-color: #996699;
         text-decoration: none;
     }
-    .navigacija li.icon a{
-      padding: 0;
-      border:0;
-      margin: 0;
-      font-size: 80%;
+    .navigacija li.icon a {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        font-size: 80%;
         width: 100%;
     }
-  .navigacija.responsive {
-    position: relative;
-  }
- .navigacija.responsive li {
-   float: none;
-   display: inline-block;
-   width: 80%;
-
- }
- .navigacija.responsive li.icon {
-  position: absolute;;
-  right: 2%;
-  top: 5%;
-  width: 10%;
-  float: right;
- }
+    .navigacija.responsive {
+        position: relative;
+    }
+    .navigacija.responsive li {
+        float: none;
+        display: inline-block;
+        width: 80%;
+    }
+    .navigacija.responsive li.icon {
+        position: absolute;
+        ;
+        right: 2%;
+        top: 5%;
+        width: 10%;
+        float: right;
+    }
     .element {
         margin-left: 2%;
         margin-right: 2%;
@@ -376,52 +384,56 @@ body {
 }
 
 @media screen and (max-width: 700px) {
-  .navigacija {
-      position: relative;
-  }
-.navigacija li:not(:first-child) {display: none;}
-.navigacija li:first-child {width: 80%;}
-.navigacija li.icon {
-  float: right;
-  display: inline-block;
-  position: absolute;
-  right: 2%;
-  top: 10%;
-  width: 10%;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  }
-  .navigacija li:hover {
-      background-color: #996699;
-      text-decoration: none;
-  }
-  .navigacija li.icon a{
-    padding: 0;
-    border:0;
-    margin: 0;
-    font-size: 80%;
-    width: 100%;
-  }
-.navigacija.responsive {
-  position: relative;
-}
-
-.navigacija.responsive li {
- float: none;
- display: inline-block;
- width: 80%;
-}
-.navigacija.responsive li.icon {
- position: absolute;;
- right: 2%;
- top: 5%;
- width: 10%;
- float: right;
-}
-.modal-content {
-    width: 100%;
-}
+    .navigacija {
+        position: relative;
+    }
+    .navigacija li:not(:first-child) {
+        display: none;
+    }
+    .navigacija li:first-child {
+        width: 80%;
+    }
+    .navigacija li.icon {
+        float: right;
+        display: inline-block;
+        position: absolute;
+        right: 2%;
+        top: 10%;
+        width: 10%;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+    .navigacija li:hover {
+        background-color: #996699;
+        text-decoration: none;
+    }
+    .navigacija li.icon a {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        font-size: 80%;
+        width: 100%;
+    }
+    .navigacija.responsive {
+        position: relative;
+    }
+    .navigacija.responsive li {
+        float: none;
+        display: inline-block;
+        width: 80%;
+    }
+    .navigacija.responsive li.icon {
+        position: absolute;
+        ;
+        right: 2%;
+        top: 5%;
+        width: 10%;
+        float: right;
+    }
+    .modal-content {
+        width: 100%;
+    }
     .element {
         margin-left: 2%;
         margin-right: 2%;
@@ -480,7 +492,8 @@ body {
     padding: 0;
     border: 0;
 }
-.unosrev>ul{
+
+.unosrev>ul {
     display: none;
     background-color: #996699;
     width: 96%;
@@ -490,13 +503,15 @@ body {
     text-align: justify;
     list-style: none;
 }
-.unosrev>ul li{
+
+.unosrev>ul li {
     font-size: 110%;
     font-weight: bold;
     text-decoration: none;
     color: #421C52;
     width: 100%;
 }
+
 .unosrev>label {
     display: block;
     font-size: 150%;
@@ -578,7 +593,6 @@ body {
     width: 100%;
 }
 
-
 .dodkont {
     font-family: 'Noto Serif';
     width: 60%;
@@ -599,7 +613,8 @@ body {
     padding: 0;
     border: 0;
 }
-.unoskont>ul{
+
+.unoskont>ul {
     display: none;
     background-color: #996699;
     width: 96%;
@@ -609,13 +624,15 @@ body {
     text-align: justify;
     list-style: none;
 }
-.unoskont>ul li{
+
+.unoskont>ul li {
     font-size: 110%;
     font-weight: bold;
     text-decoration: none;
     color: #421C52;
     width: 100%;
 }
+
 .unoskont>label {
     display: block;
     margin-top: 3%;
@@ -730,8 +747,9 @@ body {
 .revpic>img {
     width: 100%;
 }
+
 .revpic>img:not(:first-child) {
-  display: none;
+    display: none;
 }
 
 .komentar {
@@ -754,7 +772,8 @@ body {
     padding: 0;
     border: 0;
 }
-.unoskoment>ul{
+
+.unoskoment>ul {
     display: none;
     background-color: #996699;
     width: 96%;
@@ -764,13 +783,15 @@ body {
     text-align: justify;
     list-style: none;
 }
-.unoskoment>ul li{
+
+.unoskoment>ul li {
     font-size: 110%;
     font-weight: bold;
     text-decoration: none;
     color: #421C52;
     width: 100%;
 }
+
 .unoskoment>label {
     display: block;
     font-size: 150%;
@@ -836,15 +857,15 @@ body {
     font-weight: bold;
     transition: 0.3s;
     background-color: transparent;
-    cursor:pointer
+    cursor: pointer
 }
 
-.buttonLijevo:hover,
-.buttonLijevo:focus {
+.buttonLijevo:hover, .buttonLijevo:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
 }
+
 .buttonDesno {
     position: absolute;
     top: 45%;
@@ -853,51 +874,62 @@ body {
     font-size: 110%;
     font-weight: bold;
     transition: 0.3s;
-  background-color: transparent;
-  cursor:pointer
+    background-color: transparent;
+    cursor: pointer
 }
 
-.buttonDesno:hover,
-.buttonDesno:focus {
+.buttonDesno:hover, .buttonDesno:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
 }
-.dots{
-  position: absolute;
-  text-align: center;
-  bottom: 2%;
-  left:45%;
-}
-.dot {
 
-  cursor:pointer;
-  height: 13px;
-  width: 13px;
-  margin: 0 2px;
-  background-color:  #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
+.dots {
+    position: absolute;
+    text-align: center;
+    bottom: 2%;
+    left: 45%;
+}
+
+.dot {
+    cursor: pointer;
+    height: 13px;
+    width: 13px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
 }
 
 .active, .dot:hover {
-  background-color:  #717171;
+    background-color: #717171;
 }
+
+
 /* Fading animation */
+
 .fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
 }
 
 @keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
 }

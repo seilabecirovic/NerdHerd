@@ -1,6 +1,7 @@
 ﻿# NerdHerd
 Nerd Herd stranica će predstavljati stranicu sa najnovijim vijestima i kritikama iz svijeta muzike, knjiga, filmova, igrica i serija. Šeila Bećirović 17118
 
+
 I Urađeno:
 
 -Mockup-ovi stranica
@@ -17,11 +18,25 @@ I Urađeno:
 
 -HTML i CSS su formatirani i validirani
 
+-Validacija unosa na stranicama: Review, Add a review i Contact. (Submit je onemogućen dok sva polja ne budu valid)
+
+-Dropdown meni kad je display <700px.
+
+-Na stranici Review urađen je Carousel/Slider koji predstavlja galeriju. Klik na sliku raširi sliku preko cijelog ekrana, a escape vraća pogled nazad na Review.
+
+-Stranice se učitavaju bez reload-a, omogućen back i forward.
+
+-JavaScript odvojen u poseban file.
+
 II Šta nije urađeno:
 
 -Sve što zahtijeva korištenje biblioteka i framework-a
 
 III i IV Bugovi
+
+-Napomena: 
+Validacija css javlja warning/error radi webkit animacija. 
+Refresh stranice vraća na početnu stranicu.
 
 V File-ovi
 
@@ -55,7 +70,9 @@ Folder MockUp
 
 Folder NerdHerd
 
--index - html glavne stranice i stranice s najnovijim kritikama
+-index - html glavne stranice
+
+-latestreview - html stranice s najnovijim kritikama
 
 -allreview -  html stranice svih recenzija, kritika
 
