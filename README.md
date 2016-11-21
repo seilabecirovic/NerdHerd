@@ -1,7 +1,7 @@
 ﻿# NerdHerd
 Nerd Herd stranica će predstavljati stranicu sa najnovijim vijestima i kritikama iz svijeta muzike, knjiga, filmova, igrica i serija. Šeila Bećirović 17118
 
-﻿# Spirala 1
+# Spirala 1
  
 I Urađeno:
 
@@ -70,7 +70,7 @@ Folder NerdHerd
 -review - html stranica s kritikom
 
 
-﻿# Spirala 2
+# Spirala 2
  
 I Urađeno:
 
