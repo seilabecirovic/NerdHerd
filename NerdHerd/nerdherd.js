@@ -1,37 +1,8 @@
-function funkcijaUcitanja(sadrzaj) {
-    var ajax = new XMLHttpRequest();
-    ajax.onreadystatechange = function() {
-        if (ajax.readyState == 4 && ajax.status == 200) {
-            document.getElementById("polje").innerHTML = ajax.responseText;
-            history.pushState(sadrzaj, "", window.location.href);
-        }
-        if (ajax.readyState == 4 && ajax.status == 404)
-            document.getElementById("polje").innerHTML = "Error: unknown URL";
-    }
-    ajax.open("GET", sadrzaj, true);
-    ajax.send();
-
-}
-
-function funkcijaUcitanjaPast(sadrzaj2) {
-    var ajax = new XMLHttpRequest();
-    ajax.onreadystatechange = function() {
-        if (ajax.readyState == 4 && ajax.status == 200) {
-            document.getElementById("polje").innerHTML = ajax.responseText;
-        }
-        if (ajax.readyState == 4 && ajax.status == 404)
-            document.getElementById("polje").innerHTML = "Greska: nepoznat URL";
-    }
-    ajax.open("GET", sadrzaj2, true);
-    ajax.send();
-}
-
-window.onload = function() {
-    history.replaceState("latestreview.html", "", window.location.href);
-    funkcijaUcitanjaPast("latestreview.html");
-}
-window.onpopstate = function(event) {
-    funkcijaUcitanjaPast(event.state);
+function searchkey(){
+  var searchTxt=$("input[name='search']").val();
+  $.post("pretraga.php",{searchVal: searchTxt},function(output){
+    $("#output").html(output);
+  });
 }
 
 function DDFunkcija() {
@@ -53,6 +24,16 @@ function enlargeImage(element) {
 function closeButton() {
     var mod = document.getElementById('myModal');
     mod.style.display = "none";
+}
+
+
+window.onclick = function(event) {
+
+      var modal1 = document.getElementById('id01');
+    if (event.target == modal1) {
+        modal1.style.display = "none";
+
+    }
 }
 
 window.addEventListener("keydown", function(e) {

@@ -85,10 +85,30 @@ body {
     display: none;
 }
 
-.navigacija li:hover {
-    background-color: #996699;
+.navigacija li a {
+    text-decoration: none;
+    font-family: 'Gentium Basic', sans-serif;
 }
 
+.navigacija li:hover {
+    background-color: #996699;
+    text-decoration: none;
+}
+
+.navigacija li a:link {
+    color: silver;
+    text-decoration: none;
+}
+
+.navigacija li a:visited {
+    color: silver;
+    text-decoration: none;
+}
+
+.navigacija li a:active {
+    color: silver;
+    text-decoration: none;
+}
 .polje {
     background-color: #b793b7;
     width: 100%;
@@ -171,6 +191,8 @@ body {
     box-sizing: border-box;
 }
 
+
+
 .red {
     width: 100%;
     float: left;
@@ -179,6 +201,7 @@ body {
     border: 0;
     height: 40%;
 }
+
 
 .red:last-child {
     margin-bottom: 5%;
@@ -204,7 +227,27 @@ body {
     margin-right: 2%;
 }
 
-.element>h2 {
+.element a:link {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.element a:visited {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.element a:active {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.element a:hover {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.element h2 a{
     height: 100%;
     width: 100%;
     color: #421C52;
@@ -214,6 +257,7 @@ body {
     border: 0;
     font-size: 200%;
     text-align: center;
+    text-decoration: none;
 }
 
 .element>img {
@@ -273,7 +317,7 @@ body {
     height: 25%;
 }
 
-.tekstrev>h2 {
+.tekstrev>h2,a {
     font-family: 'Lora';
     margin: 0;
     padding: 0;
@@ -282,6 +326,26 @@ body {
     font-size: 150%;
     color: #421C52;
     text-align: justify;
+}
+
+.tekstrev a:link {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.tekstrev a:visited {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.tekstrev a:active {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.tekstrev a:hover {
+    color: #421C52;
+    text-decoration: none;
 }
 
 .tekstrev>p {
@@ -295,6 +359,11 @@ body {
 }
 
 @media only screen and (max-device-width: 700px) {
+  table {
+      width:80%;
+      font-size: 50%;
+      overflow: scroll;
+  }
     .navigacija {
         position: relative;
     }
@@ -386,6 +455,11 @@ body {
 @media screen and (max-width: 700px) {
     .navigacija {
         position: relative;
+    }
+    table {
+        width:80%;
+        font-size: 50%;
+        overflow: scroll;
     }
     .navigacija li:not(:first-child) {
         display: none;
@@ -724,6 +798,7 @@ body {
     margin: 0;
     border: 0;
     color: #421C52;
+    word-wrap: break-word;
 }
 
 .par>p {
@@ -731,6 +806,7 @@ body {
     border: 0;
     width: 100%;
     font-family: "Noto Serif";
+    word-wrap: break-word;
 }
 
 .revpic {
@@ -932,4 +1008,136 @@ body {
     to {
         opacity: 1
     }
+}
+
+
+
+
+.output>h2,a {
+    font-family: 'Lora';
+    margin: 0;
+    padding: 0;
+    border: 0;
+    padding-top: 2%;
+    font-size: 150%;
+    color: #421C52;
+    text-align: justify;
+}
+
+.output a:link {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.output a:visited {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.output a:active {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.output a:hover {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.searchie {
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    display: inline-block;
+}
+
+.searchie>input[type="text"] {
+    padding: 0%;
+    margin: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    position: relative;
+    width: 90%;
+    border: 1px solid black;
+    margin-right: 0;
+}
+}
+.searchbutton{
+  margin-left: 2%;
+  float: left;
+  width: 100%;
+  font-family: 'Noto Serif';
+  color: #421C52;
+  display: inline-block;
+}
+
+table{
+  width: 90%;
+  border-collapse: collapse;
+  margin: auto;
+  color: #421C52;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table{
+  font-size: 150%;
+}
+th, td{
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px;
+}
+
+th{
+  background-color: #421C52;
+  color: silver;
+}
+
+
+
+tr:first-child{
+  color: black;
+}
+
+td:first-child{
+  font-weight: bold;
+}
+
+tr a{
+  color: inherit;
+}
+
+tr a {
+    font-family: 'Lora';
+    margin: 0;
+    padding: 0;
+    border: 0;
+    padding-top: 2%;
+    color: #421C52;
+    font-size: 100%;
+    text-align: justify;
+}
+
+tr a:link {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.output a:visited {
+    color: #421C52;
+    text-decoration: none;
+}
+
+tr a:active {
+    color: #421C52;
+    text-decoration: none;
+}
+
+tr a:hover {
+    color: #421C52;
+    text-decoration: none;
 }
