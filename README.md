@@ -154,7 +154,7 @@ Refresh stranice vraća na početnu stranicu.
 
 -Omogućena je pretraga preko polja naziv recenzije i ime autora.
 
--Urađen je deployment stranice na openshift.
+-Urađen je deployment stranice na openshift: http://nameherd-nerdherd.44fs.preview.openshiftapps.com/
 
 ## II Šta nije urađeno:
 
@@ -164,7 +164,7 @@ Refresh stranice vraća na početnu stranicu.
 
 ## V File-ovi
 
-# Folder MockUp 
+### Folder MockUp 
 
 -index - mockup glavne stranice
 
@@ -191,7 +191,7 @@ Refresh stranice vraća na početnu stranicu.
 -reviewmob - mockup stranice s kritikom za mobitel
 
 
-Folder NerdHerd
+### Folder NerdHerd
 
 -index - php glavne stranice s najnovijim kritikama
 
