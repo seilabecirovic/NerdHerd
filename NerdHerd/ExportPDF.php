@@ -7,7 +7,7 @@ if(!isset($_SESSION['user'])){
 
  ?>
 <?php
-require('FPDF\tfpdf.php');
+require('./FPDF/tfpdf.php');
 class PDF extends tFPDF {
     const DPI = 96;
     const MM_IN_INCH = 25.4;
