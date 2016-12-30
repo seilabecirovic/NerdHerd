@@ -3,7 +3,7 @@ Nerd Herd stranica će predstavljati stranicu sa najnovijim vijestima i kritikam
 
 # Spirala 1
  
-I Urađeno:
+## I Urađeno:
 
 -Mockup-ovi stranica
 
@@ -19,16 +19,16 @@ I Urađeno:
 
 -HTML i CSS su formatirani i validirani
 
-II Šta nije urađeno:
+## II Šta nije urađeno:
 
 -Sve što zahtijeva korištenje biblioteka i framework-a
 
-III i IV Bugovi
+## III i IV Bugovi
 
-V File-ovi
+## V File-ovi
 
 
-Folder MockUp 
+### Folder MockUp 
 
 -index - mockup glavne stranice
 
@@ -55,7 +55,7 @@ Folder MockUp
 -reviewmob - mockup stranice s kritikom za mobitel
 
 
-Folder NerdHerd
+### Folder NerdHerd
 
 -index - html glavne stranice s najnovijim kritikama
 
@@ -71,8 +71,8 @@ Folder NerdHerd
 
 
 # Spirala 2
- 
-I Urađeno:
+
+ ## I Urađeno:
 
 -HTML i CSS su formatirani i validirani
 
@@ -86,20 +86,85 @@ I Urađeno:
 
 -JavaScript odvojen u poseban file.
 
-II Šta nije urađeno:
+## II Šta nije urađeno:
 
 -Sve što zahtijeva korištenje biblioteka i framework-a
 
-III i IV Bugovi
+## III i IV Bugovi
 
 -Napomena: 
 Validacija css javlja warning/error radi webkit animacija. 
 Refresh stranice vraća na početnu stranicu.
 
-V File-ovi
+## V File-ovi
 
 
-Folder MockUp 
+### Folder MockUp 
+
+-index - mockup glavne stranice
+
+-indexmob - mockup glavne stranice za mobitel
+
+-allreviews - mockup stranice svih recenzija, kritika
+
+-allreviewsmob - mockup stranice svih recenzija, kritika za mobitel
+
+-addreview - mockup stranice dodavanja kritike
+
+-addreviewmob - mockup stranice dodavanja kritike za mobitel
+
+-about - mockup stranice o stranici 
+
+-aboutmob - mockup stranice o stranici za mobitel
+
+-contact - mockup stranice za kontaktiranje vlasnika stranice
+
+-contactmob - mockup stranice za kontaktiranje vlasnika stranice za mobitel
+
+-review - mockup stranice s kritikom
+
+-reviewmob - mockup stranice s kritikom za mobitel
+
+
+### Folder NerdHerd
+
+-index - html glavne stranice
+
+-latestreview - html stranice s najnovijim kritikama
+
+-allreview -  html stranice svih recenzija, kritika
+
+-addreview -  html stranica dodavanja kritike
+
+-about - html stranica o stranici 
+
+-contact - html stranica za kontaktiranje vlasnika stranice
+
+-review - html stranica s kritikom
+
+# Spirala 3
+ 
+## I Urađeno:
+
+-Izvršena je serijalizacija svih podataka u XML. Svi podaci su validirani - client/server side. Dosta pažnje se posvetilo na XSS ranjivost koda. Omogućen je login s podacima username: __admin__ i password: __pass__. Registrovanje nije omogućeno radi ekskluzivnosti stranice i dopuštenih admin-a. Admin ima pravo da briše ili potvrdi nepotvrđene recenzije te da iste uređuje, kao i da briše i potvrdi komentare. 
+
+-Omogućen je download podataka o primljenim porukama u obliku csv-file.
+
+-Omogućen je export recenzije sa slikama i komentarima u pdf file.
+
+-Omogućena je pretraga preko polja naziv recenzije i ime autora.
+
+-Urađen je deployment stranice na openshift.
+
+## II Šta nije urađeno:
+
+-Sve što nema smisla s datom temom stranice.
+
+## III i IV Bugovi
+
+## V File-ovi
+
+# Folder MockUp 
 
 -index - mockup glavne stranice
 
@@ -128,16 +193,56 @@ Folder MockUp
 
 Folder NerdHerd
 
--index - html glavne stranice
+-index - php glavne stranice s najnovijim kritikama
 
--latestreview - html stranice s najnovijim kritikama
+-allreview -  php stranice svih recenzija, kritika
 
--allreview -  html stranice svih recenzija, kritika
+-addreview -  php stranica dodavanja kritike
 
--addreview -  html stranica dodavanja kritike
+-about - php stranica o stranici 
 
--about - html stranica o stranici 
+-contact - php stranica za kontaktiranje vlasnika stranice
 
--contact - html stranica za kontaktiranje vlasnika stranice
+-review - php stranica s kritikom
 
--review - html stranica s kritikom
+-approved - php stranica za admin-a s listom recenzija gdje je omogućen export u pdf
+
+-ExportPDF - php za export u pdf /admin privilages
+
+-login - php stranica za login/logout
+
+-messages - php za export u csv /admin privilages
+
+-pretraga - php za pretragu
+
+-search - php stranica za pretragu
+
+-unconfiremdComments - php stranica s tabelom nepotvrđenih komentara za admina
+
+-unconfirmedReviews - php stranica s tabelom nepotvrđenih recenzija
+
+### XML Files:
+
+-users - podaci o adminu
+
+-unconfirmedReviews - podaci o nepotvrđenim recenzijama
+
+-uncomments - podaci o nepotvrđenim komentarima
+
+-reviews - podaci o kritikama
+
+-contacts - poruke adminu
+
+-comments - podaci kritika
+
+### CSS i JS:
+
+-stil.css
+
+-nerdherd.js
+
+### Ostali folderi:
+
+-FPDF - biblioteka ekporta u pdf
+
+-uploads - slike sa stranice
