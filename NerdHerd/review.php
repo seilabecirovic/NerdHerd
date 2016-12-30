@@ -1,3 +1,12 @@
+<?php
+session_start();
+ ?>
+ <?php
+ $GLOBALS["IHaveCalledSrandBefore"]=1;
+if (!$GLOBALS["IHaveCalledSrandBefore"]++) {
+  srand((double) microtime() * 1000000);
+}
+?>
 <!DOCTYPE html>
 <html>
 <?php
@@ -5,31 +14,32 @@
 $posted = false;
  if( $_POST ) {
    $posted = true;
-   if (file_exists("comments.xml"))
+   if (file_exists("uncomments.xml"))
    {
-    $xml=simplexml_load_file("comments.xml");
+    $xml=simplexml_load_file("uncomments.xml");
     $last_id   = count($xml) - 1;
     $etwas = $xml->children();
     $stillnoidea= $etwas[$last_id];
-    $broj = $stillnoidea->ID+1;
+    $randval = rand(1,1024);
     $comment= $xml->addChild('comment');
-    $comment->addChild('ID', $broj."");
-    $comment->addChild('RevID',$_POST['revic']);
-    $comment->addChild('Name', $_POST['name']);
-    $comment->addChild('Quality', $_POST['quality']."");
-    $comment->addChild('Text', $_POST['Tekst']);
-    $result= $xml->asXML("comments.xml");
+    $comment->addChild('ID', $randval."");
+    $comment->addChild('RevID',htmlspecialchars($_POST['revic']));
+    $comment->addChild('Name', htmlspecialchars($_POST['name']));
+    $comment->addChild('Quality',htmlspecialchars($_POST['quality'].""));
+    $comment->addChild('Text', htmlspecialchars($_POST['Tekst']));
+    $result= $xml->asXML("uncomments.xml");
    }
    else {
      $xml = new SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><comments></comments>');
      $xml->addAttribute('version', '1.0');
      $comment= $xml->addChild('comment');
-     $comment->addChild('ID', '1');
-     $comment->addChild('RevID',$_POST['revic']);
-     $comment->addChild('Name', $_POST['name']);
-     $comment->addChild('Quality', $_POST['quality']."");
-     $comment->addChild('Text', $_POST['Tekst']);
-     $result= $xml->asXML("comments.xml");
+     $randval = rand(1,1024);
+     $comment->addChild('ID', $randval."");
+     $comment->addChild('RevID',htmlspecialchars($_POST['revic']));
+     $comment->addChild('Name', htmlspecialchars($_POST['name']));
+     $comment->addChild('Quality',htmlspecialchars($_POST['quality'].""));
+     $comment->addChild('Text', htmlspecialchars($_POST['Tekst']));
+     $result= $xml->asXML("uncomments.xml");
    }
  }
  ?>
@@ -53,13 +63,25 @@ $posted = false;
         </div>
         <div class="meni">
             <ul class="navigacija" id="mojanav">
-                <li>  <a href="index.php"> Latest reviews</a></li>
-                <li>  <a href='allreview.php'>All reviews </a></li>
+              <li>  <a href="index.php"> Latest reviews</a></li>
+              <li>  <a href='allreview.php'>All reviews</a></li>
+              <?php if(isset($_SESSION['user'])){
+                echo "<li>  <a href='approved.php'>Approved reviews</a></li>
+                <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
+                <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
+                <li>  <a href='messages.php'>Get Messages</a></li>
+                <li>  <a href='login.php?action=logout'>Logout</a></li>";
+              }
+              else {
+                echo "
                 <li>  <a href='addreview.php'>Add a review</a></li>
                 <li>  <a href='about.php'>About</a></li>
                 <li>  <a href='contact.php'>Contact </a></li>
-                <li>Login</li>
-                <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
+                <li>  <a href='login.php'>Login</a></li>";
+              }
+               ?>
+               <li>  <a href='search.php'>Search</a></li>
+              <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>
         <div id="polje">
@@ -67,7 +89,7 @@ $posted = false;
   <?php
   $prom="";
   if(isset($_REQUEST['id'])){
-  $xml=simplexml_load_file("unconfirmedReviews.xml");
+  $xml=simplexml_load_file("reviews.xml");
   $prom=$_REQUEST['id'];
   $sviRevs = $xml->children();
   $otvoreno = false;
@@ -75,13 +97,13 @@ $posted = false;
   {
       if ($review->ID==$_REQUEST['id'])
       {
-        echo '<div class="titlerev"><h1>'.$review->Title.'</h1></div>';
-        echo '<div class="par"><p>'.$review->Name.'</p>'.'<p>'.$review->Email.'</p></div>';
-        echo '<div class="revpic">
-            <img class="carousel fade" onclick="enlargeImage(this)" src="http://i.lv3.hbo.com/assets/images/series/westworld/episodes/media-blast/160819-westworld-s1-blast-07-1280.jpg" alt="Review" />
-            <img class="carousel fade" onclick="enlargeImage(this)" src="https://s.yimg.com/uu/api/res/1.2/UI5BpO8MK6MMeFq7.ln7Rg--/aD03MjA7dz0xMjgwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/uu/api/res/1.2/_0FaLlWmbB9v6lkydKSkhg--/aD03MjA7dz0xMjgwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/creatr-images/GLB/2016-10-03/f024f7e0-8937-11e6-818b-75dbca047757_SuperFanTV_s2016e193C_NIGHT_Westworld_Thumb.png"
-                alt="Review" />
-            <img class="carousel fade" onclick="enlargeImage(this)" src="http://media.comicbook.com/uploads1/2015/08/westworld-trailer-147031-1280x0.jpg" alt="Review" />
+        echo '<div class="titlerev"><h1>'.htmlspecialchars($review->Title).'</h1></div>';
+        echo '<div class="par"><p>'.htmlspecialchars($review->Name).'</p>'.'<p>'.htmlspecialchars($review->Email).'</p></div>';
+        echo '<div class="revpic">';
+        $pictures=$review->Pictures;
+        echo    '<img class="carousel fade" onclick="enlargeImage(this)" src='.htmlspecialchars($pictures->Picture1).' alt="Review" />
+            <img class="carousel fade" onclick="enlargeImage(this)" src='.htmlspecialchars($pictures->Picture2).' alt="Review" />
+            <img class="carousel fade" onclick="enlargeImage(this)" src='.htmlspecialchars($pictures->Picture3).' alt="Review" />
             <span class="buttonLijevo" onclick="CarouselFun(-1)">&#10094;</span>
             <span class="buttonDesno" onclick="CarouselFun(1)">&#10095;</span>
             <div class="dots">
@@ -90,7 +112,7 @@ $posted = false;
                 <span class="dot" onclick="trenutniCarousel(3)"></span>
             </div>
         </div>';
-        echo '<div class="par"><p><br>'.$review->Text.'</p></div>';
+        echo '<div class="par"><p><br>'.htmlspecialchars($review->Text).'</p></div>';
         break;
       }
   }
@@ -122,6 +144,30 @@ $posted = false;
             <input class="komentbutton" type="submit" value="Send">
         </form>
     </div>
+
+    <?php
+    $prom="";
+    if(isset($_REQUEST['id'])){
+    if (file_exists("comments.xml")){
+    $xml=simplexml_load_file("comments.xml");
+    $prom=$_REQUEST['id'];
+    $koments = $xml->children();
+    $count=0;
+    foreach( $koments as $koment)
+    {
+      $glupost1=$koment->RevID."";
+      $glupost2=$prom."";
+      if ($glupost1==$glupost2){
+      $count++;
+
+          echo '<div class="par"><h2>Comment '.$count."".': </h2>';
+          echo '<p>'.htmlspecialchars($koment->Name).'</p>'.'<p>Quality: '.htmlspecialchars($koment->Quality).'</p>';
+          echo '<p>'.htmlspecialchars($koment->Text).'</p></div>';
+        }
+    }
+    }
+  }
+    ?>
 </div>
 </div>
 

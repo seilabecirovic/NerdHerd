@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION['user'])){
+  header('Location: ' . "index.php", true, 303);
+  die();
+}
+
+ ?>
 <!DOCTYPE html>
 <html>
 
@@ -22,19 +30,25 @@
         </div>
         <div class="meni">
             <ul class="navigacija" id="mojanav">
-                <li>  <a href="index.php"> Latest reviews</a></li>
-                <li>  <a href='allreview.php'>All reviews </a></li>
+              <li>  <a href="index.php"> Latest reviews</a></li>
+              <li>  <a href='allreview.php'>All reviews</a></li>
+              <?php if(isset($_SESSION['user'])){
+                echo "<li>  <a href='approved.php'>Approved reviews</a></li>
+                <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
+                <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
+                <li>  <a href='messages.php'>Get Messages</a></li>
+                <li>  <a href='login.php?action=logout'>Logout</a></li>";
+              }
+              else {
+                echo "
                 <li>  <a href='addreview.php'>Add a review</a></li>
                 <li>  <a href='about.php'>About</a></li>
                 <li>  <a href='contact.php'>Contact </a></li>
-                <li>  <a href='messages.php'>Get Messages</a></li>
-                <li>  <a href='approved.php'>Approved reviews with comments</a></li>
-                <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
-                <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
-                <li>  <a href='login.php'>Login</a></li>
-                <li>  <a href='logout.php'>Logout</a></li>
-                <li>  <a href='search.php'>Search</a></li>
-                <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
+                <li>  <a href='login.php'>Login</a></li>";
+              }
+               ?>
+               <li>  <a href='search.php'>Search</a></li>
+              <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>
         <div id="polje">
@@ -56,15 +70,15 @@
                 </th>
               </tr>
               <?php
-              if (file_exists("unconfirmedReviews.xml"))
+              if (file_exists("reviews.xml"))
               {
-               $xml=simplexml_load_file("unconfirmedReviews.xml");
+               $xml=simplexml_load_file("reviews.xml");
                $sviRevs = $xml->children();
                foreach( $sviRevs as $review)
                {
                  echo '<tr><td>';
-                 echo '<a href="review.php?id='.$review->ID.'">'.$review->Title.'</a></td>';
-                 echo '<td>'.$review->Name.'</td>';
+                 echo '<a href="review.php?id='.htmlspecialchars($review->ID).'">'.htmlspecialchars($review->Title).'</a></td>';
+                 echo '<td>'.htmlspecialchars($review->Name).'</td>';
                   $brojac=0;
                  if (file_exists("comments.xml"))
                  {
@@ -79,7 +93,7 @@
                  }
                  else $brojac=0;
                  echo '<td>'.$brojac."".'</td>';
-                 echo '<td><a href="pdfEksport.php">Get PDF</a></td>';
+                 echo '<td><a href="ExportPDF.php?id='.htmlspecialchars($review->ID).'">Get PDF</a></td>';
                   echo "</tr>";
                  }
                }

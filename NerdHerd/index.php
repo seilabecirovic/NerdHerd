@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+ ?>
 <html>
 
 <head>
@@ -23,26 +26,32 @@
         <div class="meni">
             <ul class="navigacija" id="mojanav">
                 <li>  <a href="index.php"> Latest reviews</a></li>
-                <li>  <a href='allreview.php'>All reviews </a></li>
-                <li>  <a href='addreview.php'>Add a review</a></li>
-                <li>  <a href='about.php'>About</a></li>
-                <li>  <a href='contact.php'>Contact </a></li>
-                <li>  <a href='messages.php'>Get Messages</a></li>
-                <li>  <a href='approved.php'>Approved reviews with comments</a></li>
-                <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
-                <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
-                <li>  <a href='login.php'>Login</a></li>
-                <li>  <a href='logout.php'>Logout</a></li>
-                <li>  <a href='search.php'>Search</a></li>
+                <li>  <a href='allreview.php'>All reviews</a></li>
+                <?php if(isset($_SESSION['user'])){
+                  echo "<li>  <a href='approved.php'>Approved reviews</a></li>
+                  <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
+                  <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
+                  <li>  <a href='messages.php'>Get Messages</a></li>
+                  <li>  <a href='login.php?action=logout'>Logout</a></li>";
+                }
+                else {
+                  echo "
+                  <li>  <a href='addreview.php'>Add a review</a></li>
+                  <li>  <a href='about.php'>About</a></li>
+                  <li>  <a href='contact.php'>Contact </a></li>
+                  <li>  <a href='login.php'>Login</a></li>";
+                }
+                 ?>
+                 <li>  <a href='search.php'>Search</a></li>
                 <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>
         <div id="polje">
           <div class="glavne">
             <?php
-            if (file_exists("unconfirmedReviews.xml"))
+            if (file_exists("reviews.xml"))
             {
-             $xml=simplexml_load_file("unconfirmedReviews.xml");
+             $xml=simplexml_load_file("reviews.xml");
              $last_id   = count($xml) - 1;
              $sviRevs = $xml->children();
              $brojac=0;
@@ -56,8 +65,9 @@
                }
                $Node= $sviRevs[$x];
                echo '<div class="element">';
-               echo '<img src="http://www.vishmax.com/en/innovattive-cms/themes/themax-theme-2015/images/no-image-found.gif" alt="Review" />';
-               echo '<h2> <a href=review.php?id='.$Node->ID.'>'.$Node->Title.'</a></h2>';
+                 $pictures=$Node->Pictures;
+               echo '<img src="'.htmlspecialchars($pictures->Picture1).'" alt="Review" />';
+               echo '<h2> <a href=review.php?id='.htmlspecialchars($Node->ID).'>'.htmlspecialchars($Node->Title).'</a></h2>';
                echo '</div>';
                if($brojac%3==2){
                  print "</div>";
@@ -70,7 +80,6 @@
            else              {
               echo '<h1>No reviews</h1>';
               }
-
             ?>
 
           </div>

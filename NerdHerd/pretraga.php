@@ -1,17 +1,20 @@
 <?php
+session_start();
+ ?>
+<?php
 
 $output="";
   if(isset($_POST['searchVal'])  && !empty(['searchVal'])){
-    $searchq=$_POST['searchVal'];
+    $searchq=htmlspecialchars($_POST['searchVal']);
     $searchq = preg_replace("#[^0-9a-z]#i","",$searchq);
-    if (file_exists("unconfirmedReviews.xml"))
+    if (file_exists("reviews.xml"))
     {
-      $xml=simplexml_load_file("unconfirmedReviews.xml");
+      $xml=simplexml_load_file("reviews.xml");
       $sviRevs = $xml->children();
       $brojac=0;
       foreach( $sviRevs as $review)
       {
-        if (stripos($review->Title,$searchq)!==false || stripos($review->Name,$searchq)!==false)
+        if (stripos($review->Title,$searchq)!==false || stripos($review->Name,$searchq)!==false || stripos($review->Title." ".$review->Name,$searchq)!==false || stripos($review->Name." ".$review->Title,$searchq)!==false)
         {
           $title=$review->Title;
           $name = $review->Name;

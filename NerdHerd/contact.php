@@ -1,3 +1,6 @@
+<?php
+session_start();
+ ?>
 <!DOCTYPE html>
 <html>
 <?php
@@ -13,9 +16,9 @@ $posted = false;
     $broj = $stillnoidea->ID+1;
     $contact= $xml->addChild('contact');
     $contact->addChild('ID', $broj."");
-    $contact->addChild('Name', $_POST['name']);
-    $contact->addChild('Email', $_POST['email']);
-    $contact->addChild('Text', $_POST['Tekst']);
+    $contact->addChild('Name', htmlspecialchars($_POST['name']));
+    $contact->addChild('Email',htmlspecialchars( $_POST['email']));
+    $contact->addChild('Text', htmlspecialchars($_POST['Tekst']));
     $result= $xml->asXML("contacts.xml");
    }
    else {
@@ -23,10 +26,10 @@ $posted = false;
      $xml->addAttribute('version', '1.0');
      $contact= $xml->addChild('contact');
      $contact->addChild('ID', '1');
-     $contact->addChild('Name', $_POST['name']);
-$contact->addChild('Email', $_POST['email']);
-$contact->addChild('Text', $_POST['Tekst']);
-$result= $xml->asXML("contacts.xml");
+     $contact->addChild('Name', htmlspecialchars($_POST['name']));
+     $contact->addChild('Email',htmlspecialchars( $_POST['email']));
+     $contact->addChild('Text', htmlspecialchars($_POST['Tekst']));
+     $result= $xml->asXML("contacts.xml");
    }
  }
  ?>
@@ -50,15 +53,25 @@ $result= $xml->asXML("contacts.xml");
         </div>
         <div class="meni">
             <ul class="navigacija" id="mojanav">
-                <li>  <a href="index.php"> Latest reviews</a></li>
-                <li>  <a href='allreview.php'>All reviews </a></li>
+              <li>  <a href="index.php"> Latest reviews</a></li>
+              <li>  <a href='allreview.php'>All reviews</a></li>
+              <?php if(isset($_SESSION['user'])){
+                echo "<li>  <a href='approved.php'>Approved reviews</a></li>
+                <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
+                <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
+                <li>  <a href='messages.php'>Get Messages</a></li>
+                <li>  <a href='login.php?action=logout'>Logout</a></li>";
+              }
+              else {
+                echo "
                 <li>  <a href='addreview.php'>Add a review</a></li>
                 <li>  <a href='about.php'>About</a></li>
                 <li>  <a href='contact.php'>Contact </a></li>
-                <li>  <a href='messages.php'>Get Messages</a></li>
-                <li>Login</li>
-                <li>  <a href='search.php'>Search</a></li>
-                <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
+                <li>  <a href='login.php'>Login</a></li>";
+              }
+               ?>
+               <li>  <a href='search.php'>Search</a></li>
+              <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>
         <div id="polje">

@@ -1,4 +1,12 @@
 <?php
+session_start();
+if(!isset($_SESSION['user'])){
+  header('Location: ' . "index.php", true, 303);
+  die();}
+
+ ?>
+
+<?php
 $filename = "messages.csv";
 if (file_exists("contacts.xml"))
 {
@@ -11,11 +19,11 @@ if (file_exists("contacts.xml"))
  $csv_row ='';
  foreach( $messages as $poruka)
  {
-   $csv_row.=$poruka->Name;
+   $csv_row.=htmlspecialchars($poruka->Name);
    $csv_row.=",";
-   $csv_row.=$poruka->Email;
+   $csv_row.=htmlspecialchars($poruka->Email);
    $csv_row.=",";
-   $csv_row.=$poruka->Text;
+   $csv_row.=htmlspecialchars($poruka->Text);
    $csv_row.="\n";
  }
  header('Content-type: application/csv');
@@ -24,8 +32,10 @@ if (file_exists("contacts.xml"))
  exit;
  }
    else {
-    echo "<script type='text/javascript'>alert("There are no messages!");</script>"
+    echo '<script type="text/javascript">alert("There are no messages!");</script>';
+    header('Location: ' . "index.php");
     exit;
+
    }
 
  ?>

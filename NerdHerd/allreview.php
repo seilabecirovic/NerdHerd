@@ -1,3 +1,6 @@
+<?php
+session_start();
+ ?>
 <!DOCTYPE html>
 <html>
 
@@ -21,33 +24,45 @@
         </div>
         <div class="meni">
             <ul class="navigacija" id="mojanav">
-                <li>  <a href="index.php"> Latest reviews</a></li>
-                <li>  <a href='allreview.php'>All reviews </a></li>
+              <li>  <a href="index.php"> Latest reviews</a></li>
+              <li>  <a href='allreview.php'>All reviews</a></li>
+              <?php if(isset($_SESSION['user'])){
+                echo "<li>  <a href='approved.php'>Approved reviews</a></li>
+                <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
+                <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
+                <li>  <a href='messages.php'>Get Messages</a></li>
+                <li>  <a href='login.php?action=logout'>Logout</a></li>";
+              }
+              else {
+                echo "
                 <li>  <a href='addreview.php'>Add a review</a></li>
                 <li>  <a href='about.php'>About</a></li>
                 <li>  <a href='contact.php'>Contact </a></li>
-                <li>Login</li>
-                <li>  <a href='search.php'>Search</a></li>
-                <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
+                <li>  <a href='login.php'>Login</a></li>";
+              }
+               ?>
+               <li>  <a href='search.php'>Search</a></li>
+              <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>
         <div id="polje">
 <div class="glavne">
   <?php
-  if (file_exists("unconfirmedReviews.xml"))
+  if (file_exists("reviews.xml"))
   {
-   $xml=simplexml_load_file("unconfirmedReviews.xml");
+   $xml=simplexml_load_file("reviews.xml");
    $sviRevs = $xml->children();
    foreach( $sviRevs as $review)
    {
        echo '<div class="revred">';
 
      echo '<div class="revslika">';
-     echo '<img src="http://www.vishmax.com/en/innovattive-cms/themes/themax-theme-2015/images/no-image-found.gif" alt="Review" />';
+    $pictures=$review->Pictures;
+     echo '<img src="'.htmlspecialchars($pictures->Picture1).'" alt="Review" />';
      echo '</div>';
      echo '<div class="tekstrev">';
-     echo '<h2> <a href=review.php?id='.$review->ID.'>'.$review->Title.'</a></h2>';
-     echo '<p>'.$review->Name.'</p>'.'<p>'.$review->Email.'</p>';
+     echo '<h2> <a href=review.php?id='.htmlspecialchars($review->ID).'>'.htmlspecialchars($review->Title).'</a></h2>';
+     echo '<p>'.htmlspecialchars($review->Name).'</p>'.'<p>'.htmlspecialchars($review->Email).'</p>';
      echo '</div>';
       echo "</div>";
      }

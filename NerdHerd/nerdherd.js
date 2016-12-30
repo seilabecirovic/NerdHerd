@@ -180,3 +180,32 @@ function unosKont() {
     if (!tacnost) greska.style.display = "inline-block";
     return tacnost;
 }
+
+function unosLog() {
+    var tacnost = false;
+    var greska = document.getElementsByClassName('greska')[0];
+    var ime = document.getElementsByName('username')[0];
+    var pass= document.getElementsByName('password')[0];
+    greska.innerHTML = "";
+    var imeRegEx = /^[a-zA-Z ]{2,30}$/;
+
+    if (ime.value.length < 1 || !imeRegEx.test(ime.value)) {
+        ime.style.borderColor = "#421C5";
+        greska.innerHTML += "<li>Username is not in valid format</li>";
+        tacnost = false;
+    } else {
+        ime.style.borderColor = "#b793b7";
+        tacnost = true;
+    }
+
+    if (pass.value.length < 1 || !imeRegEx.test(pass.value)) {
+        pass.style.borderColor = "#421C5";
+        greska.innerHTML += "<li>Password is not in valid format</li>";
+        tacnost = false;
+    } else {
+        ime.style.borderColor = "#b793b7";
+        tacnost = true;
+    }
+    if (!tacnost) greska.style.display = "inline-block";
+    return tacnost;
+}

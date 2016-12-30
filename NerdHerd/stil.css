@@ -193,6 +193,7 @@ body {
 
 
 
+
 .red {
     width: 100%;
     float: left;
@@ -217,6 +218,11 @@ body {
     border: 0;
     height: inherit;
     display: inline-block;
+    text-align: center;
+}
+.element a{
+  text-align: center;
+  width: 100%;
 }
 
 .element:first-child {
@@ -357,12 +363,87 @@ body {
     color: #421C52;
     text-align: justify;
 }
+table{
+  width: 90%;
+  border-collapse: collapse;
+  margin: auto;
+  color: #421C52;
+  font-size: 140%;
+  table-layout:fixed;
+}
+th{
+  overflow:hidden;
+  text-wrap: normal;
+word-wrap: break-word;
+}
+td{
+  overflow:hidden;
+  text-wrap: normal;
+word-wrap: break-word;
+}
+table, th, td {
+    border: 1px solid black;
+    font-size: 140%;
+}
+
+table{
+  margin-bottom: 45px;
+}
+th, td{
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px;
+}
+
+th{
+  background-color: #421C52;
+  color: silver;
+}
+
+
+tr:first-child{
+  color: black;
+}
+
+
+tr a {
+    font-family: 'Gentium Basic';
+    margin: 0;
+    padding: 0;
+    border: 0;
+    padding-top: 2%;
+    color: #421C52;
+    text-align: justify;
+    font-size: 100%;
+}
+
+tr a:link {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.output a:visited {
+    color: #421C52;
+    text-decoration: none;
+}
+
+tr a:active {
+    color: #421C52;
+    text-decoration: none;
+}
+
+tr a:hover {
+    color: #421C52;
+    text-decoration: none;
+}
 
 @media only screen and (max-device-width: 700px) {
-  table {
-      width:80%;
-      font-size: 50%;
-      overflow: scroll;
+  table{
+    width: 80%;
+    overflow: scroll;
+  }
+  table, th, td {
+      font-size: 60%;
   }
     .navigacija {
         position: relative;
@@ -450,16 +531,21 @@ body {
     .modal-content {
         width: 100%;
     }
+    .titlerev>h1 {
+      font-size: 80%;
+    }
 }
 
 @media screen and (max-width: 700px) {
+  table{
+    width: 80%;
+    overflow: scroll;
+  }
+  table, th, td {
+      font-size: 60%;
+  }
     .navigacija {
         position: relative;
-    }
-    table {
-        width:80%;
-        font-size: 50%;
-        overflow: scroll;
     }
     .navigacija li:not(:first-child) {
         display: none;
@@ -543,6 +629,9 @@ body {
     }
     .tekstrev>p {
         font-size: 80%;
+    }
+    .titlerev>h1 {
+      font-size: 80%;
     }
 }
 
@@ -1049,7 +1138,6 @@ body {
     width: 100%;
     padding: 0;
     border: 0;
-    display: inline-block;
 }
 
 .searchie>input[type="text"] {
@@ -1058,86 +1146,71 @@ body {
     padding-top: 1%;
     padding-bottom: 1%;
     position: relative;
-    width: 90%;
-    border: 1px solid black;
+    width: 70%;
+    border:0;
     margin-right: 0;
+
 }
-}
+
 .searchbutton{
-  margin-left: 2%;
-  float: left;
-  width: 100%;
+  margin: 0;
+  padding:0;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border:0;
+  width: 10%;
   font-family: 'Noto Serif';
   color: #421C52;
-  display: inline-block;
+  font-size: 60%;
 }
 
-table{
-  width: 90%;
-  border-collapse: collapse;
-  margin: auto;
+td textarea {
+  width: 99.4%;
+  border: 1px solid black;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  font-family: 'Noto Serif';
+  overflow: hidden;
+  font-size:inherit;
+}
+
+h1{
+  margin-left: 40%;
   color: #421C52;
 }
 
-table, th, td {
-    border: 1px solid black;
+.unos{
+  display: block;
+  margin-left: 40%;
 }
-
-table{
-  font-size: 150%;
-}
-th, td{
-  text-align: center;
-  vertical-align: middle;
-  padding: 5px;
-}
-
-th{
-  background-color: #421C52;
-  color: silver;
-}
-
-
-
-tr:first-child{
-  color: black;
-}
-
-td:first-child{
+.unos>label{
+  display: block;
+  font-size: 20px;
   font-weight: bold;
-}
-
-tr a{
-  color: inherit;
-}
-
-tr a {
-    font-family: 'Lora';
-    margin: 0;
-    padding: 0;
-    border: 0;
-    padding-top: 2%;
     color: #421C52;
-    font-size: 100%;
-    text-align: justify;
+
 }
 
-tr a:link {
-    color: #421C52;
-    text-decoration: none;
+
+.unos>input[type="text"], .unos>input[type="password"]{
+  padding: 5px;
+  margin: auto;
+  position: relative;
+  width: 35%;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 150%;
+  color: #421C52;
 }
 
-.output a:visited {
-    color: #421C52;
-    text-decoration: none;
-}
+.dugme{
+  margin-left: 41%;
+  width:20%;
+  font-family: 'Noto Serif';
+  color: #421C52;
+  font-size: 150%
 
-tr a:active {
-    color: #421C52;
-    text-decoration: none;
-}
-
-tr a:hover {
-    color: #421C52;
-    text-decoration: none;
 }
