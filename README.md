@@ -154,7 +154,7 @@ Refresh stranice vraća na početnu stranicu.
 
 -Omogućena je pretraga preko polja naziv recenzije i ime autora.
 
--Urađen je deployment stranice na openshift: http://nameherd-nerdherd.44fs.preview.openshiftapps.com/
+-Urađen je deployment stranice na openshift: http://nerdherdgit-nerdherd.44fs.preview.openshiftapps.com/
 
 ## II Šta nije urađeno:
 
@@ -246,3 +246,117 @@ Refresh stranice vraća na početnu stranicu.
 -FPDF - biblioteka ekporta u pdf
 
 -uploads - slike sa stranice
+
+
+# Spirala 4
+ 
+## I Urađeno:
+
+-Kreirana je baza. Svi podaci se učitivaju iz baze i upisuju u bazu. 
+
+-Omogućen je transfer podataka iz xml-a u bazu.
+
+-Kreiran je web servis, koji vraća json i izvršeno je testiranje istog.
+
+-Urađen je deployment stranice na openshift: http://nerdherdgit-nerdherd.44fs.preview.openshiftapps.com/
+
+## II Šta nije urađeno:
+
+-Sve što nema smisla s datom temom stranice.
+
+## III i IV Bugovi
+
+## V File-ovi
+
+### Folder MockUp 
+
+-index - mockup glavne stranice
+
+-indexmob - mockup glavne stranice za mobitel
+
+-allreviews - mockup stranice svih recenzija, kritika
+
+-allreviewsmob - mockup stranice svih recenzija, kritika za mobitel
+
+-addreview - mockup stranice dodavanja kritike
+
+-addreviewmob - mockup stranice dodavanja kritike za mobitel
+
+-about - mockup stranice o stranici 
+
+-aboutmob - mockup stranice o stranici za mobitel
+
+-contact - mockup stranice za kontaktiranje vlasnika stranice
+
+-contactmob - mockup stranice za kontaktiranje vlasnika stranice za mobitel
+
+-review - mockup stranice s kritikom
+
+-reviewmob - mockup stranice s kritikom za mobitel
+
+
+### Folder NerdHerd
+
+-index - php glavne stranice s najnovijim kritikama
+
+-allreview -  php stranice svih recenzija, kritika
+
+-addreview -  php stranica dodavanja kritike
+
+-about - php stranica o stranici 
+
+-contact - php stranica za kontaktiranje vlasnika stranice
+
+-review - php stranica s kritikom
+
+-approved - php stranica za admin-a s listom recenzija gdje je omogućen export u pdf
+
+-ExportPDF - php za export u pdf /admin privilages
+
+-xmlToDB - php za import podataka u bazu
+
+-login - php stranica za login/logout
+
+-messages - php za export u csv /admin privilages
+
+-pretraga - php za pretragu
+
+-search - php stranica za pretragu
+
+-unconfiremdComments - php stranica s tabelom nepotvrđenih komentara za admina
+
+-unconfirmedReviews - php stranica s tabelom nepotvrđenih recenzija
+
+### XML Files:
+
+-users - podaci o adminu
+
+-unconfirmedReviews - podaci o nepotvrđenim recenzijama
+
+-uncomments - podaci o nepotvrđenim komentarima
+
+-reviews - podaci o kritikama
+
+-contacts - poruke adminu
+
+-comments - podaci kritika
+
+### CSS i JS:
+
+-stil.css
+
+-nerdherd.js
+
+### Ostali folderi:
+
+-FPDF - biblioteka ekporta u pdf
+
+-uploads - slike sa stranice
+
+-Baza - dvije kopije baze (.sql)
+
+-IzvjestajTestiranjePostman - izvještaj s rezultatima testiranja
+
+-NerdHerdLocalTesting - folder za lokalno testiranje. Kreirati user-a u bazi: username: __spirala4__ i password: __spirala4__
+
+-nerdherdDB - shema baze
