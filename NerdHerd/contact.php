@@ -5,9 +5,19 @@ session_start();
 <html>
 <?php
 $posted = false;
+$result =false;
  if( $_POST ) {
    $posted = true;
-   if (file_exists("contacts.xml"))
+   $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+   $veza->exec("set names utf8");
+    $veza->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "INSERT INTO contacts (name,email,text)
+    VALUES (:name, :email, :text)";
+    $unos = $veza->prepare($sql);
+      $result=$unos->execute(array("name"=>$_POST['name'],"email"=> $_POST['email'],
+    "text"=>$_POST['Tekst']));
+  }
+/*   if (file_exists("contacts.xml"))
    {
     $xml=simplexml_load_file("contacts.xml");
     $last_id   = count($xml) - 1;
@@ -31,7 +41,7 @@ $posted = false;
      $contact->addChild('Text', htmlspecialchars($_POST['Tekst']));
      $result= $xml->asXML("contacts.xml");
    }
- }
+ }*/
  ?>
 <head>
     <meta charset="utf-8">
@@ -59,8 +69,10 @@ $posted = false;
                 echo "<li>  <a href='approved.php'>Approved reviews</a></li>
                 <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
                 <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
-                <li>  <a href='messages.php'>Get Messages</a></li>
-                <li>  <a href='login.php?action=logout'>Logout</a></li>";
+                <li>  <a href='messages.php'>Get Messages</a></li>";
+                if($_SESSION['button']=='0')
+                echo "<li>  <a href='xmlToDB.php'>Export data</a></li>";
+                echo "<li>  <a href='login.php?action=logout'>Logout</a></li>";
               }
               else {
                 echo "
@@ -70,7 +82,8 @@ $posted = false;
                 <li>  <a href='login.php'>Login</a></li>";
               }
                ?>
-               <li>  <a href='search.php'>Search</a></li>
+              <li>  <a href='search.php'>Search</a></li>
+<li> <a href='nerdherd.php?review'>Web Service</a></li>
               <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>

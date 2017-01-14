@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_POST['action']) && $_POST['action']==="Login"){
-  if (file_exists("users.xml"))
+/*  if (file_exists("users.xml"))
   {
     $xml=simplexml_load_file("users.xml");
     $usern=$xml->Username."";
@@ -17,8 +17,25 @@ if(isset($_POST['action']) && $_POST['action']==="Login"){
       }
       else echo "Wrong password";
     }
-  }
-}
+  }*/
+  $poslaniUser=htmlspecialchars($_POST['username'])."";
+  $poslaniPass=htmlspecialchars($_POST['password'])."";
+      $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+      $veza->exec("set names utf8");
+      $upit = $veza ->query("SELECT id, username, password, button from users where username='".$poslaniUser."'");
+      $rezultat = $upit -> fetch();
+      if($rezultat==NULL) print "Username does not exist";
+      else{
+              if($rezultat['password']==md5($poslaniPass)){
+                $_SESSION['user']=$_POST['username'];
+                $_SESSION['button']=$rezultat['button']."";
+                header('Location: ' . "index.php", true, 303);
+                die();
+              }
+              else print "Pogresan password";
+          }
+      }
+
 if(isset($_GET['action']) && $_GET['action']==="logout"){
   session_destroy();
   header('Location: ' . "index.php", true, 303);
@@ -57,8 +74,10 @@ if(isset($_GET['action']) && $_GET['action']==="logout"){
                 echo "<li>  <a href='approved.php'>Approved reviews</a></li>
                 <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
                 <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
-                <li>  <a href='messages.php'>Get Messages</a></li>
-                <li>  <a href='login.php?action=logout'>Logout</a></li>";
+                <li>  <a href='messages.php'>Get Messages</a></li>";
+                if($_SESSION['button']=='0')
+                echo "<li>  <a href='xmlToDB.php'>Export data</a></li>";
+                echo "<li>  <a href='login.php?action=logout'>Logout</a></li>";
               }
               else {
                 echo "
@@ -68,7 +87,8 @@ if(isset($_GET['action']) && $_GET['action']==="logout"){
                 <li>  <a href='login.php'>Login</a></li>";
               }
                ?>
-               <li>  <a href='search.php'>Search</a></li>
+              <li>  <a href='search.php'>Search</a></li>
+<li> <a href='nerdherd.php?review'>Web Service</a></li>
               <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>

@@ -14,9 +14,31 @@ if($_GET)
   $keys=array_keys($_GET);
   foreach ($keys as $key => $value) {
     if($_REQUEST[$keys[$key]]=="Delete" || $_REQUEST[$keys[$key]]=="Approve"){
+      $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+      $veza->exec("set names utf8");
+      $veza->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
        $koji_red=intval(explode("_",$keys[$key])[1]);
        if($_REQUEST[$keys[$key]]=="Delete"){
-         $xml=simplexml_load_file("uncomments.xml");
+         $sql = "DELETE FROM uncomments WHERE id = :id";
+         $unos = $veza->prepare($sql);
+        $unos->execute(array("id"=>$koji_red.""));
+       }
+       if($_REQUEST[$keys[$key]]=="Approve"){
+         $sql = "INSERT INTO comments (reviID,name,quality,text)
+         VALUES (:reviID, :name, :quality, :text)";
+         $sklj = $veza -> query("SELECT * FROM uncomments WHERE id=".$koji_red."");
+         $something = $sklj -> fetch();
+         $unos = $veza->prepare($sql);
+         $unos->execute(array("reviID"=>$something['revID'],"name"=>$something['name'],"quality"=>$something['quality'],
+       "text"=>$something['text']));
+       $sql = "DELETE FROM uncomments WHERE id = :id";
+       $unos = $veza->prepare($sql);
+       $unos->execute(array("id"=>$koji_red.""));
+     }}
+   }
+ }
+
+      /*   $xml=simplexml_load_file("uncomments.xml");
          $count = 0;
          $xml1 = new SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><comments></comments>');
          $xml1->addAttribute('version', '1.0');
@@ -35,7 +57,7 @@ if($_GET)
           $xml1->asXML("uncomments.xml");
        }
        if($_REQUEST[$keys[$key]]=="Approve"){
-         $xml=simplexml_load_file("uncomments.xml");
+        $xml=simplexml_load_file("uncomments.xml");
          $count = 0;
          $xml1 = new SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><comments></comments>');
          $xml1->addAttribute('version', '1.0');
@@ -79,7 +101,7 @@ if($_GET)
        }
 }
 }
-}
+}*/
  ?>
 <head>
     <meta charset="utf-8">
@@ -108,8 +130,10 @@ if($_GET)
                 echo "<li>  <a href='approved.php'>Approved reviews</a></li>
                 <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
                 <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
-                <li>  <a href='messages.php'>Get Messages</a></li>
-                <li>  <a href='login.php?action=logout'>Logout</a></li>";
+                <li>  <a href='messages.php'>Get Messages</a></li>";
+                if($_SESSION['button']=='0')
+                echo "<li>  <a href='xmlToDB.php'>Export data</a></li>";
+                echo "<li>  <a href='login.php?action=logout'>Logout</a></li>";
               }
               else {
                 echo "
@@ -119,7 +143,8 @@ if($_GET)
                 <li>  <a href='login.php'>Login</a></li>";
               }
                ?>
-               <li>  <a href='search.php'>Search</a></li>
+              <li>  <a href='search.php'>Search</a></li>
+<li> <a href='nerdherd.php?review'>Web Service</a></li>
               <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>
@@ -146,7 +171,28 @@ if($_GET)
                 </th>
               </tr>
               <?php
-              if (file_exists("uncomments.xml"))
+              $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+              $veza->exec("set names utf8");
+               $rez = $veza -> query("SELECT id, name, quality,text  FROM uncomments");
+               if ($rez!=false)
+               {
+                 $rezultat=$rez->fetchAll();
+                 if($rezultat!=null){
+                   foreach ($rezultat as $koment) {
+                     echo '<tr>';
+                     echo  '<td>'.htmlspecialchars($koment['name']).'</td>';
+                     echo '<td>'.htmlspecialchars($koment['quality'])."".'</td>';
+                     echo '<td>'.htmlspecialchars($koment['text']).'</td>';
+                     echo '<td><input class="komentbutton" type="submit" name="Opcija_'.$koment['id']. '"value="Delete">';
+                     echo '<td><input class="komentbutton" type="submit" name="Opcija_'.$koment['id'].'"value="Approve">';
+                     echo "</tr>";
+                     }
+                   }
+                   else echo '<h1>Unconfirmed comments do not exist';
+                 }
+                 else echo '<h1>Unconfirmed comments do not exist';
+
+          /*    if (file_exists("uncomments.xml"))
               {
                $xml=simplexml_load_file("uncomments.xml");
                $koments = $xml->children();
@@ -161,7 +207,7 @@ if($_GET)
                  echo '<td><input class="komentbutton" type="submit" name="Opcija_'.$koment->ID.'"value="Approve">';
                  echo "</tr>";
                  }
-               }
+               }*/
                ?>
             </table>
             <br>

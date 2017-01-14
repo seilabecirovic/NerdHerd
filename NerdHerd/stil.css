@@ -219,6 +219,7 @@ body {
     height: inherit;
     display: inline-block;
     text-align: center;
+    word-wrap: break-word;
 }
 .element a{
   text-align: center;
@@ -264,6 +265,7 @@ body {
     font-size: 200%;
     text-align: center;
     text-decoration: none;
+    word-wrap: break-word;
 }
 
 .element>img {
@@ -321,6 +323,7 @@ body {
     padding-top: 5%;
     border: 0;
     height: 25%;
+    word-wrap: break-word;
 }
 
 .tekstrev>h2,a {
@@ -332,6 +335,7 @@ body {
     font-size: 150%;
     color: #421C52;
     text-align: justify;
+    word-wrap: break-word;
 }
 
 .tekstrev a:link {

@@ -31,8 +31,10 @@ session_start();
                   echo "<li>  <a href='approved.php'>Approved reviews</a></li>
                   <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
                   <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
-                  <li>  <a href='messages.php'>Get Messages</a></li>
-                  <li>  <a href='login.php?action=logout'>Logout</a></li>";
+                  <li>  <a href='messages.php'>Get Messages</a></li>";
+                  if($_SESSION['button']=='0')
+                  echo "<li>  <a href='xmlToDB.php'>Export data</a></li>";
+                  echo "<li>  <a href='login.php?action=logout'>Logout</a></li>";
                 }
                 else {
                   echo "
@@ -43,13 +45,39 @@ session_start();
                 }
                  ?>
                  <li>  <a href='search.php'>Search</a></li>
+                 <li> <a href='nerdherd.php?review'>Web Service</a></li>
                 <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>
         <div id="polje">
           <div class="glavne">
             <?php
-            if (file_exists("reviews.xml"))
+            $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+            $veza->exec("set names utf8");
+             $rezultat = $veza -> query("SELECT id, title, picture1 FROM reviews ORDER BY id desc LIMIT 9");
+             if ($rezultat!=null)
+             {
+               $brojac=0;
+               foreach ($rezultat as $review) {
+                 if($brojac%3==0){
+                   echo '<div class="red">';
+                 }
+                 echo '<div class="element">';
+                 echo '<img src="'.htmlspecialchars($review['picture1']).'" alt="Review" />';
+                 echo '<h2> <a href=review.php?id='.htmlspecialchars($review['id']).'>'.htmlspecialchars($review['title']).'</a></h2>';
+                 echo '</div>';
+                 if($brojac%3==2){
+                   print "</div>";
+                 }
+                 $brojac++;
+               }
+             }
+             else              {
+                echo '<h1>No reviews</h1>';
+                }
+
+
+        /*    if (file_exists("reviews.xml"))
             {
              $xml=simplexml_load_file("reviews.xml");
              $last_id   = count($xml) - 1;
@@ -80,6 +108,7 @@ session_start();
            else              {
               echo '<h1>No reviews</h1>';
               }
+              */
             ?>
 
           </div>

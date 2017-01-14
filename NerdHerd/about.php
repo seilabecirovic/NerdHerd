@@ -30,8 +30,10 @@ session_start();
                 echo "<li>  <a href='approved.php'>Approved reviews</a></li>
                 <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
                 <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
-                <li>  <a href='messages.php'>Get Messages</a></li>
-                <li>  <a href='login.php?action=logout'>Logout</a></li>";
+                <li>  <a href='messages.php'>Get Messages</a></li>";
+                if($_SESSION['button']=='0')
+                echo "<li>  <a href='xmlToDB.php'>Export data</a></li>";
+                echo "<li>  <a href='login.php?action=logout'>Logout</a></li>";
               }
               else {
                 echo "
@@ -42,6 +44,7 @@ session_start();
               }
                ?>
                <li>  <a href='search.php'>Search</a></li>
+               <li> <a href='nerdherd.php?review'>Web Service</a></li>
               <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>

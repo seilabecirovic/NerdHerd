@@ -43,9 +43,50 @@ class PDF extends tFPDF {
 $pdf=new PDF();
 
 $pdf->AddFont('DejaVu','','DejaVuSansCondensed.ttf',true);
-if(isset($_REQUEST['id'])){
+if(isset($_REQUEST['id']) && is_numeric($_REQUEST['id'])){
+  $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+  $veza->exec("set names utf8");
+  $upit = $veza -> query("SELECT id,name,email,title,text,picture1,picture2,picture3 FROM reviews where id=".$_REQUEST['id']);
+  if($upit!=false){
+  $review = $upit -> fetch();
+  if($review!=null){
+    $pdf->AddPage();
+    $pdf->SetFont('DejaVu','',12);
+    $pdf->Cell(0,20,$review['title'],0,2);
+    $pdf->SetFont('DejaVu','',12);
+    $pdf->Cell(0,10,"by ".$review['name']." ".$review['email'],0,2);
+    $pdf->MultiCell(0,5,$review['text'],0,1);
+    $pdf->AddPage("L");
+    $pdf->centreImage($review['picture1']."");
+    $pdf->AddPage("L");
+    $pdf->centreImage($review['picture2']."");
+    $pdf->AddPage("L");
+    $pdf->centreImage($review['picture3']."");
 
-$xml=simplexml_load_file("reviews.xml");
+    $brojac=0;
+      $pdf->AddPage();
+    $upit2 = $veza -> query("SELECT id,reviID,name,quality,text FROM comments where reviID=".$_REQUEST['id']);
+    if($upit2!=false){
+    $komentari = $upit2 -> fetchAll();
+      if($komentari!=null){
+        foreach ($komentari as $kom) {
+        $brojac++;
+        $pdf->Cell(0,20,'Comment '.$brojac."",0,2);
+        $pdf->Cell(0,5,$kom['name'],0,2);
+        $pdf->Cell(0,5,'Quality: '.$kom['quality'],0,2);
+        $pdf->MultiCell(0,5,$kom['text'],0,2);
+      }
+    }
+    else{ $pdf->Cell(0,5,'Review has no comments.',0,2);}
+  }
+  else{ $pdf->Cell(0,5,'Review has no comments.',0,2);}
+
+}
+}
+$pdf->output();
+}
+
+/*$xml=simplexml_load_file("reviews.xml");
 
 $prom=$_REQUEST['id'];
 
@@ -99,5 +140,5 @@ foreach( $sviRevs as $review)
       break;
     }
 }
-}
+}*/
 ?>

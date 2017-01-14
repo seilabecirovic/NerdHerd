@@ -36,8 +36,10 @@ if(!isset($_SESSION['user'])){
                 echo "<li>  <a href='approved.php'>Approved reviews</a></li>
                 <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
                 <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
-                <li>  <a href='messages.php'>Get Messages</a></li>
-                <li>  <a href='login.php?action=logout'>Logout</a></li>";
+                <li>  <a href='messages.php'>Get Messages</a></li>";
+                if($_SESSION['button']=='0')
+                echo "<li>  <a href='xmlToDB.php'>Export data</a></li>";
+                echo "<li>  <a href='login.php?action=logout'>Logout</a></li>";
               }
               else {
                 echo "
@@ -47,7 +49,8 @@ if(!isset($_SESSION['user'])){
                 <li>  <a href='login.php'>Login</a></li>";
               }
                ?>
-               <li>  <a href='search.php'>Search</a></li>
+              <li>  <a href='search.php'>Search</a></li>
+<li> <a href='nerdherd.php?review'>Web Service</a></li>
               <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>
@@ -70,7 +73,32 @@ if(!isset($_SESSION['user'])){
                 </th>
               </tr>
               <?php
-              if (file_exists("reviews.xml"))
+              $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+              $veza->exec("set names utf8");
+               $rezultat = $veza -> query("SELECT id, name, title FROM reviews");
+               if ($rezultat!=null)
+               {
+                 $brojac=0;
+                 foreach ($rezultat as $review) {
+                   echo '<tr><td>';
+                   echo '<a href="review.php?id='.htmlspecialchars($review['id']).'">'.htmlspecialchars($review['title']).'</a></td>';
+                   echo '<td>'.htmlspecialchars($review['name']).'</td>';
+                   $upit=$veza -> query("SELECT id, reviID from comments where reviID=".$review['id'].";");
+                   if($upit!=false){
+                   $komentari=$upit ->fetchAll();
+                   if($komentari!=null)
+                   $brojac=count($komentari);
+                 }
+                   echo '<td>'.$brojac."".'</td>';
+                   echo '<td><a href="ExportPDF.php?id='.htmlspecialchars($review['id']).'">Get PDF</a></td>';
+                    echo "</tr>";
+
+                  }
+                }
+                else              {
+                   echo '<h1>No reviews</h1>';
+                   }
+            /*  if (file_exists("reviews.xml"))
               {
                $xml=simplexml_load_file("reviews.xml");
                $sviRevs = $xml->children();
@@ -101,7 +129,7 @@ if(!isset($_SESSION['user'])){
              else              {
                 echo '<h1>No reviews</h1>';
                 }
-
+*/
                ?>
 
             </table>

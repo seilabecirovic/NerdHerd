@@ -12,6 +12,7 @@ if (!$GLOBALS["IHaveCalledSrandBefore"]++) {
 
 <?php
 $posted = false;
+$result = false;
  if( $_POST ) {
    define("UPLOAD_DIR", "uploads/");
    $path ="uploads/";
@@ -106,7 +107,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_FILES["myFile2"])) {
     $path2 .=$name;
 }
    $posted = true;
-   if (file_exists("unconfirmedReviews.xml"))
+   $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+   $veza->exec("set names utf8");
+   $veza->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+   $sql = "INSERT INTO unconfirmedreviews (name,email,title,text,picture1,picture2,picture3)
+   VALUES (:name, :email, :title, :text, :picture1, :picture2, :picture3)";
+   $unos = $veza->prepare($sql);
+    $result= $unos->execute(array("name"=>$_POST['name'],"email"=> $_POST['email'],"title"=>$_POST['title'],
+ "text"=>$_POST['Tekst'],"picture1"=>$path,"picture2"=>$path1,"picture3"=>$path2));
+
+}
+
+/*   if (file_exists("unconfirmedReviews.xml"))
    {
     $xml=simplexml_load_file("unconfirmedReviews.xml");
     $last_id   = count($xml) - 1;
@@ -141,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_FILES["myFile2"])) {
      $pictures->addChild('Picture3',htmlspecialchars($path2));
      $result= $xml->asXML("unconfirmedReviews.xml");
    }
- }
+ }*/
  ?>
 <head>
     <meta charset="utf-8">
@@ -169,8 +181,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_FILES["myFile2"])) {
                 echo "<li>  <a href='approved.php'>Approved reviews</a></li>
                 <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
                 <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
-                <li>  <a href='messages.php'>Get Messages</a></li>
-                <li>  <a href='login.php?action=logout'>Logout</a></li>";
+                <li>  <a href='messages.php'>Get Messages</a></li>";
+                if($_SESSION['button']=='0')
+                echo "<li>  <a href='xmlToDB.php'>Export data</a></li>";
+                echo "<li>  <a href='login.php?action=logout'>Logout</a></li>";
               }
               else {
                 echo "
@@ -181,6 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_FILES["myFile2"])) {
               }
                ?>
                <li>  <a href='search.php'>Search</a></li>
+               <li> <a href='nerdherd.php?review'>Web Service</a></li>
               <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>

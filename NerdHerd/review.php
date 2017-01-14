@@ -12,9 +12,19 @@ if (!$GLOBALS["IHaveCalledSrandBefore"]++) {
 <?php
 
 $posted = false;
+  $result = false;
  if( $_POST ) {
    $posted = true;
-   if (file_exists("uncomments.xml"))
+   $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+   $veza->exec("set names utf8");
+   $veza->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+   $sql = "INSERT INTO uncomments (revID,name,quality,text)
+   VALUES (:revID, :name, :quality, :text)";
+   $unos = $veza->prepare($sql);
+   $result=$unos->execute(array("revID"=>$_POST['revic'],"name"=>$_POST['name'],"quality"=>$_POST['quality']."",
+ "text"=>$_POST['Tekst']));
+   }
+/*   if (file_exists("uncomments.xml"))
    {
     $xml=simplexml_load_file("uncomments.xml");
     $last_id   = count($xml) - 1;
@@ -41,7 +51,7 @@ $posted = false;
      $comment->addChild('Text', htmlspecialchars($_POST['Tekst']));
      $result= $xml->asXML("uncomments.xml");
    }
- }
+ }*/
  ?>
 <head>
     <meta charset="utf-8">
@@ -69,8 +79,10 @@ $posted = false;
                 echo "<li>  <a href='approved.php'>Approved reviews</a></li>
                 <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
                 <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
-                <li>  <a href='messages.php'>Get Messages</a></li>
-                <li>  <a href='login.php?action=logout'>Logout</a></li>";
+                <li>  <a href='messages.php'>Get Messages</a></li>";
+                if($_SESSION['button']=='0')
+                echo "<li>  <a href='xmlToDB.php'>Export data</a></li>";
+                echo "<li>  <a href='login.php?action=logout'>Logout</a></li>";
               }
               else {
                 echo "
@@ -80,16 +92,53 @@ $posted = false;
                 <li>  <a href='login.php'>Login</a></li>";
               }
                ?>
-               <li>  <a href='search.php'>Search</a></li>
+              <li>  <a href='search.php'>Search</a></li>
+<li> <a href='nerdherd.php?review'>Web Service</a></li>
               <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>
         <div id="polje">
+          <?php
+    if( $posted ) {
+      if( $result )
+        echo "<script type='text/javascript'>alert('Your comment has been submitted successfully!')</script>";
+      else
+        echo "<script type='text/javascript'>alert('Your comment has not been submitted!')</script>";
+    }
+  ?>
 <div class="glavne">
   <?php
-  $prom="";
-  if(isset($_REQUEST['id'])){
-  $xml=simplexml_load_file("reviews.xml");
+  $prom = '';
+  if(isset($_REQUEST['id']) && is_numeric($_REQUEST['id'])){
+    $prom=$_REQUEST['id'];
+    $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+    $veza->exec("set names utf8");
+    $upit = $veza -> query("SELECT id,name,email,title,text,picture1,picture2,picture3 FROM reviews where id=".$_GET['id']);
+    if($upit!=false){
+    $review = $upit -> fetch();
+    if($review!=null){
+      echo '<div class="titlerev"><h1>'.htmlspecialchars($review['title']).'</h1></div>';
+      echo '<div class="par"><p>'.htmlspecialchars($review['name']).'</p>'.'<p>'.htmlspecialchars($review['email']).'</p></div>';
+      echo '<div class="revpic">';
+      echo    '<img class="carousel fade" onclick="enlargeImage(this)" src='.htmlspecialchars($review['picture1']).' alt="Review" />
+          <img class="carousel fade" onclick="enlargeImage(this)" src='.htmlspecialchars($review['picture2']).' alt="Review" />
+          <img class="carousel fade" onclick="enlargeImage(this)" src='.htmlspecialchars($review['picture3']).' alt="Review" />
+          <span class="buttonLijevo" onclick="CarouselFun(-1)">&#10094;</span>
+          <span class="buttonDesno" onclick="CarouselFun(1)">&#10095;</span>
+          <div class="dots">
+              <span class="dot" onclick="trenutniCarousel(1)"></span>
+              <span class="dot" onclick="trenutniCarousel(2)"></span>
+              <span class="dot" onclick="trenutniCarousel(3)"></span>
+          </div>
+      </div>';
+      echo '<div class="par"><p><br>'.htmlspecialchars($review['text']).'</p></div>';
+    }
+    else echo '<h1>Review does not exist<h1>';
+  }
+    else echo '<h1>Review does not exist<h1>';
+  }
+
+/*  $xml=simplexml_load_file("reviews.xml");
   $prom=$_REQUEST['id'];
   $sviRevs = $xml->children();
   $otvoreno = false;
@@ -116,7 +165,9 @@ $posted = false;
         break;
       }
   }
-}
+}*/
+
+
   ?>
 
     <div class="komentar">
@@ -146,7 +197,26 @@ $posted = false;
     </div>
 
     <?php
-    $prom="";
+
+    if(isset($_REQUEST['id']) && is_numeric($_REQUEST['id'])){
+
+      $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+      $veza->exec("set names utf8");
+      $upit = $veza -> query("SELECT id,reviID,name,quality,text FROM comments where reviID=".$_GET['id']);
+      if($upit!=false){
+      $komentari = $upit -> fetchAll();
+      $count=0;
+      if($komentari!=null){
+        foreach ($komentari as $koment) {
+        $count++;
+        echo '<div class="par"><h2>Comment '.$count."".': </h2>';
+        echo '<p>'.htmlspecialchars($koment['name']).'</p>'.'<p>Quality: '.htmlspecialchars($koment['quality']).'</p>';
+        echo '<p>'.htmlspecialchars($koment['text']).'</p></div>';
+        }
+      }
+    }
+  }
+    /*$prom="";
     if(isset($_REQUEST['id'])){
     if (file_exists("comments.xml")){
     $xml=simplexml_load_file("comments.xml");
@@ -166,7 +236,7 @@ $posted = false;
         }
     }
     }
-  }
+  }*/
     ?>
 </div>
 </div>

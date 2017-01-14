@@ -3,12 +3,34 @@ session_start();
  ?>
 
 <?php
-
+  $brojac=0;
 $output="";
   if(isset($_POST['search'])){
     $searchq=htmlspecialchars($_POST['search']);
     $searchq = preg_replace("#[^0-9a-z]#i","",$searchq);
-    if (file_exists("reviews.xml"))
+    $searchq='%'.$searchq.'%';
+    $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+    $veza->exec("set names utf8");
+     $rez = $veza -> prepare ("SELECT id, name, title FROM reviews WHERE name LIKE :nesto OR title LIKE :jedno");
+  $rez->execute(array('nesto' => $searchq, 'jedno'=>$searchq));
+  if ($rez!=false){
+    $nesto=$rez->fetchAll();
+    if($nesto!=null){
+     $brojac= count($nesto);
+     foreach( $nesto as $review)
+     {
+       $title=$review['title'];
+       $name = $review['name'];
+       $revID =$review['id'];
+       $output .= '<h2> <a href=review.php?id='.$revID.'>'.$title.' '.$name.'</a></h2>';
+     }
+   }
+ }
+    else  $output='There are no results';
+
+   if ($brojac==0)
+     $output='There are no results';
+  /*  if (file_exists("reviews.xml"))
     {
       $xml=simplexml_load_file("reviews.xml");
       $sviRevs = $xml->children();
@@ -27,7 +49,7 @@ $output="";
       if ($brojac==0)
         $output='There are no results';
     }
-    else  $output='Search is not available';
+    else  $output='Search is not available';*/
     }
 ?>
 
@@ -61,8 +83,10 @@ $output="";
                 echo "<li>  <a href='approved.php'>Approved reviews</a></li>
                 <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
                 <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
-                <li>  <a href='messages.php'>Get Messages</a></li>
-                <li>  <a href='login.php?action=logout'>Logout</a></li>";
+                <li>  <a href='messages.php'>Get Messages</a></li>";
+                if($_SESSION['button']=='0')
+                echo "<li>  <a href='xmlToDB.php'>Export data</a></li>";
+                echo "<li>  <a href='login.php?action=logout'>Logout</a></li>";
               }
               else {
                 echo "
@@ -72,7 +96,8 @@ $output="";
                 <li>  <a href='login.php'>Login</a></li>";
               }
                ?>
-               <li>  <a href='search.php'>Search</a></li>
+              <li>  <a href='search.php'>Search</a></li>
+<li> <a href='nerdherd.php?review'>Web Service</a></li>
               <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>

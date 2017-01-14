@@ -15,10 +15,42 @@ if($_POST)
   $keys=array_keys($_POST);
   foreach ($keys as $key => $value) {
     if($_REQUEST[$keys[$key]]=="Delete" || $_REQUEST[$keys[$key]]=="Approve" || $_REQUEST[$keys[$key]]=="Save" || $_REQUEST[$keys[$key]]=="Edit"){
+      $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+      $veza->exec("set names utf8");
+      $veza->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $koji_red=intval(explode("_",$keys[$key])[1]);
       $id_zamjena=intval(explode("_",$keys[$key])[2]);
        if($_REQUEST[$keys[$key]]=="Delete"){
-         $xml=simplexml_load_file("unconfirmedReviews.xml");
+         $sql = "DELETE FROM unconfirmedreviews WHERE id = :id";
+         $unos = $veza->prepare($sql);
+         $unos->execute(array("id"=>$koji_red.""));
+       }
+        else if($_REQUEST[$keys[$key]]=="Approve"){
+          $sql = "INSERT INTO reviews (name,email,title,text,picture1,picture2,picture3)
+          VALUES (:name, :email, :title, :text, :picture1, :picture2, :picture3)";
+          $unos = $veza->prepare($sql);
+          $sklj = $veza -> query("SELECT * FROM unconfirmedreviews WHERE id=".$koji_red."");
+          $something = $sklj -> fetch();
+          $result= $unos->execute(array("name"=>$something['name'],"email"=> $something['email'],"title"=>$something['title'],
+          "text"=>$something['text'],"picture1"=>$something['picture1'],"picture2"=>$something['picture2'],"picture3"=>$something['picture3']));
+          $sql = "DELETE FROM unconfirmedreviews WHERE id = :id";
+          $unos = $veza->prepare($sql);
+          $unos->execute(array("id"=>$koji_red.""));
+      }
+      else if ($_REQUEST[$keys[$key]]=="Save"){
+        $sql = "UPDATE unconfirmedreviews SET text= :text WHERE id=:id";
+        $unos = $veza->prepare($sql);
+        $unos->execute(array("text"=>$_POST['Tekst'],"id"=>$koji_red.""));
+      }
+      else{
+        $red_izmjena=$id_zamjena;
+      }
+      }}
+      }
+
+
+
+      /*   $xml=simplexml_load_file("unconfirmedReviews.xml");
          $count = 0;
          $xml1 = new SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><unconfirmedReviews></unconfirmedReviews>');
          $xml1->addAttribute('version', '1.0');
@@ -141,12 +173,8 @@ else{
    $xml1->asXML("unconfirmedReviews.xml");
 
     $red_izmjena=-1;
- }
-else{
-  $red_izmjena=$id_zamjena;
-}
-}}
-}
+ }*/
+
  ?>
 <head>
     <meta charset="utf-8">
@@ -176,8 +204,10 @@ else{
                 echo "<li>  <a href='approved.php'>Approved reviews</a></li>
                 <li>  <a href='unconfirmedReviews.php'>Unconfirmed reviews</a></li>
                 <li>  <a href='unconfirmedComments.php'>Unconfirmed comments</a></li>
-                <li>  <a href='messages.php'>Get Messages</a></li>
-                <li>  <a href='login.php?action=logout'>Logout</a></li>";
+                <li>  <a href='messages.php'>Get Messages</a></li>";
+                if($_SESSION['button']=='0')
+                echo "<li>  <a href='xmlToDB.php'>Export data</a></li>";
+                echo "<li>  <a href='login.php?action=logout'>Logout</a></li>";
               }
               else {
                 echo "
@@ -187,7 +217,8 @@ else{
                 <li>  <a href='login.php'>Login</a></li>";
               }
                ?>
-               <li>  <a href='search.php'>Search</a></li>
+              <li>  <a href='search.php'>Search</a></li>
+<li> <a href='nerdherd.php?review'>Web Service</a></li>
               <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>
@@ -221,7 +252,36 @@ else{
               </tr>
               <?php
               $broj = 0;
-              if (file_exists("unconfirmedReviews.xml"))
+              $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+              $veza->exec("set names utf8");
+               $rez = $veza -> query("SELECT id, name, email, title,text  FROM unconfirmedreviews");
+               if ($rez!=false)
+               {
+                 $rezultat=$rez->fetchAll();
+                 if($rezultat!=null){
+                   foreach ($rezultat as $review) {
+                     echo '<tr>';
+                     echo  '<td>'.htmlspecialchars($review['title']).'</td>';
+                     echo '<td>'.htmlspecialchars($review['name']).'</td>';
+                     echo '<td>'.htmlspecialchars($review['email']).'</td>';
+                   if($broj==$red_izmjena){
+                     echo '<td colspan=4><textarea rows=20 maxlength="4000" name="Tekst">'.htmlspecialchars($review['text']).'</textarea></td>';
+                     echo '<td><input class="komentbutton" type="submit" name="Opcija_'.$review['id']. '_'.$broj.'"value="Save">';
+                   }
+                   else {
+                     echo '<td colspan=4>'.htmlspecialchars($review['text']).'</td>';
+                    echo '<td><input class="komentbutton" type="submit" name="Opcija_'.$review['id']. '_'.$broj.'"value="Edit">';
+                   }
+                   echo '<td><input class="komentbutton" type="submit" name="Opcija_'.$review['id']. '_'.$broj.'"value="Delete">';
+                   echo '<td><input class="komentbutton" type="submit" name="Opcija_'.$review['id']. '_'.$broj.'"value="Approve">';
+                  echo "</tr>";
+                  $broj++;
+                }
+              }
+              else echo '<h1>Unconfirmed Reviews do not exist';
+            }
+            else echo '<h1>Unconfirmed Reviews do not exist</h1>';
+          /*    if (file_exists("unconfirmedReviews.xml"))
               {
                $xml=simplexml_load_file("unconfirmedReviews.xml");
                $sveRev = $xml->children();
@@ -244,7 +304,7 @@ else{
               echo "</tr>";
               $broj++;
                  }
-               }
+               }*/
               ?>
             </table>
             <br>
