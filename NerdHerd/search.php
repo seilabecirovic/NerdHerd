@@ -103,7 +103,7 @@ $output="";
               }
                ?>
               <li>  <a href='search.php'>Search</a></li>
-<li> <a href='nerdherd.php?review'>Web Service</a></li>
+
               <li class="icon"> <a href="javascript:void(0);" onclick="DDFunkcija()">&#9776;</a>
             </ul>
         </div>
