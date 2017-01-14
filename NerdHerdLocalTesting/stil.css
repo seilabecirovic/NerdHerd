@@ -1,0 +1,1220 @@
+body {
+    background-color: black;
+}
+
+.stranica {
+    height: 100%;
+    width: 90%;
+    margin-top: 0;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    padding: 0;
+    border: 0;
+    float: left;
+}
+
+.logo {
+    width: 100%;
+    margin: auto;
+    padding: 0;
+    float: left;
+    height: 30%;
+}
+
+.slika {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 0;
+    float: left;
+}
+
+.slika>img {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    float: left;
+    font-family: 'Lora';
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 500%;
+    color: #b793b7;
+    text-align: center;
+}
+
+.meni {
+    position: relative;
+    margin: 0;
+    float: left;
+    width: 100%;
+    height: 20%;
+}
+
+.navigacija {
+    width: 100%;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    margin: 0;
+    border: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: #421C52;
+    list-style-type: none;
+}
+
+.navigacija>li {
+    text-decoration: none;
+    display: inline-block;
+    float: left;
+    margin: 0;
+    font-family: 'Gentium Basic', sans-serif;
+    color: silver;
+    font-size: 160%;
+    transition: 0.3s;
+    padding-right: 4%;
+    padding-left: 4%;
+}
+
+.navigacija li.icon {
+    display: none;
+}
+
+.navigacija li a {
+    text-decoration: none;
+    font-family: 'Gentium Basic', sans-serif;
+}
+
+.navigacija li:hover {
+    background-color: #996699;
+    text-decoration: none;
+}
+
+.navigacija li a:link {
+    color: silver;
+    text-decoration: none;
+}
+
+.navigacija li a:visited {
+    color: silver;
+    text-decoration: none;
+}
+
+.navigacija li a:active {
+    color: silver;
+    text-decoration: none;
+}
+.polje {
+    background-color: #b793b7;
+    width: 100%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.modal-content {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover, .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.glavne {
+    background-color: #b793b7;
+    width: 100%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+.red {
+    width: 100%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 40%;
+}
+
+
+.red:last-child {
+    margin-bottom: 5%;
+}
+
+.element {
+    width: 30%;
+    float: left;
+    padding: 0;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-top: 5%;
+    border: 0;
+    height: inherit;
+    display: inline-block;
+    text-align: center;
+    word-wrap: break-word;
+}
+.element a{
+  text-align: center;
+  width: 100%;
+}
+
+.element:first-child {
+    margin-left: 2%;
+}
+
+.element:last-child {
+    margin-right: 2%;
+}
+
+.element a:link {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.element a:visited {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.element a:active {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.element a:hover {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.element h2 a{
+    height: 100%;
+    width: 100%;
+    color: #421C52;
+    font-family: 'Lora';
+    padding: 0;
+    margin-top: 3%;
+    border: 0;
+    font-size: 200%;
+    text-align: center;
+    text-decoration: none;
+    word-wrap: break-word;
+}
+
+.element>img {
+    font-family: 'Lora';
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+    color: #421C52;
+    text-align: center;
+    max-width: 100%;
+    width: 100%;
+}
+
+.revred {
+    width: 100%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 40%;
+}
+
+.revred:last-child {
+    margin-bottom: 5%;
+}
+
+.revslika {
+    width: 36%;
+    float: left;
+    margin: 0;
+    padding: 2%;
+    padding-top: 5%;
+    border: 0;
+    height: 25%;
+}
+
+.revslika>img {
+    width: 100%;
+    height: 100%;
+    font-family: 'Lora';
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 300%;
+    color: #421C52;
+    text-align: center;
+}
+
+.tekstrev {
+    width: 56%;
+    float: left;
+    margin: 0;
+    padding: 2%;
+    padding-top: 5%;
+    border: 0;
+    height: 25%;
+    word-wrap: break-word;
+}
+
+.tekstrev>h2,a {
+    font-family: 'Lora';
+    margin: 0;
+    padding: 0;
+    border: 0;
+    padding-top: 2%;
+    font-size: 150%;
+    color: #421C52;
+    text-align: justify;
+    word-wrap: break-word;
+}
+
+.tekstrev a:link {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.tekstrev a:visited {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.tekstrev a:active {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.tekstrev a:hover {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.tekstrev>p {
+    font-family: 'Noto Serif';
+    margin: 0;
+    padding-top: 3%;
+    border: 0;
+    font-size: 100%;
+    color: #421C52;
+    text-align: justify;
+}
+table{
+  width: 90%;
+  border-collapse: collapse;
+  margin: auto;
+  color: #421C52;
+  font-size: 140%;
+  table-layout:fixed;
+}
+th{
+  overflow:hidden;
+  text-wrap: normal;
+word-wrap: break-word;
+}
+td{
+  overflow:hidden;
+  text-wrap: normal;
+word-wrap: break-word;
+}
+table, th, td {
+    border: 1px solid black;
+    font-size: 140%;
+}
+
+table{
+  margin-bottom: 45px;
+}
+th, td{
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px;
+}
+
+th{
+  background-color: #421C52;
+  color: silver;
+}
+
+
+tr:first-child{
+  color: black;
+}
+
+
+tr a {
+    font-family: 'Gentium Basic';
+    margin: 0;
+    padding: 0;
+    border: 0;
+    padding-top: 2%;
+    color: #421C52;
+    text-align: justify;
+    font-size: 100%;
+}
+
+tr a:link {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.output a:visited {
+    color: #421C52;
+    text-decoration: none;
+}
+
+tr a:active {
+    color: #421C52;
+    text-decoration: none;
+}
+
+tr a:hover {
+    color: #421C52;
+    text-decoration: none;
+}
+
+@media only screen and (max-device-width: 700px) {
+  table{
+    width: 80%;
+    overflow: scroll;
+  }
+  table, th, td {
+      font-size: 60%;
+  }
+    .navigacija {
+        position: relative;
+    }
+    .navigacija li:not(:first-child) {
+        display: none;
+    }
+    .navigacija li:first-child {
+        width: 80%;
+    }
+    .navigacija li.icon {
+        float: right;
+        display: inline-block;
+        position: absolute;
+        right: 2%;
+        top: 10%;
+        width: 10%;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+    .navigacija li:hover {
+        background-color: #996699;
+        text-decoration: none;
+    }
+    .navigacija li.icon a {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        font-size: 80%;
+        width: 100%;
+    }
+    .navigacija.responsive {
+        position: relative;
+    }
+    .navigacija.responsive li {
+        float: none;
+        display: inline-block;
+        width: 80%;
+    }
+    .navigacija.responsive li.icon {
+        position: absolute;
+        ;
+        right: 2%;
+        top: 5%;
+        width: 10%;
+        float: right;
+    }
+    .element {
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 5%;
+        min-width: 96%;
+        padding: 0;
+        border: 0;
+        display: inline-block;
+        float: left;
+    }
+    .revslika {
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 5%;
+        min-width: 96%;
+        padding: 0;
+        border: 0;
+        display: inline-block;
+        float: left;
+    }
+    .tekstrev {
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 5%;
+        min-width: 96%;
+        padding: 0;
+        border: 0;
+        display: inline-block;
+        float: left;
+    }
+    .tekstrev>h2 {
+        font-size: 80%;
+    }
+    .tekstrev>p {
+        font-size: 80%;
+    }
+    .modal-content {
+        width: 100%;
+    }
+    .titlerev>h1 {
+      font-size: 80%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+  table{
+    width: 80%;
+    overflow: scroll;
+  }
+  table, th, td {
+      font-size: 60%;
+  }
+    .navigacija {
+        position: relative;
+    }
+    .navigacija li:not(:first-child) {
+        display: none;
+    }
+    .navigacija li:first-child {
+        width: 80%;
+    }
+    .navigacija li.icon {
+        float: right;
+        display: inline-block;
+        position: absolute;
+        right: 2%;
+        top: 10%;
+        width: 10%;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+    .navigacija li:hover {
+        background-color: #996699;
+        text-decoration: none;
+    }
+    .navigacija li.icon a {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        font-size: 80%;
+        width: 100%;
+    }
+    .navigacija.responsive {
+        position: relative;
+    }
+    .navigacija.responsive li {
+        float: none;
+        display: inline-block;
+        width: 80%;
+    }
+    .navigacija.responsive li.icon {
+        position: absolute;
+        ;
+        right: 2%;
+        top: 5%;
+        width: 10%;
+        float: right;
+    }
+    .modal-content {
+        width: 100%;
+    }
+    .element {
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 5%;
+        min-width: 96%;
+        padding: 0;
+        border: 0;
+        display: inline-block;
+        float: left;
+    }
+    .revslika {
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 5%;
+        min-width: 96%;
+        padding: 0;
+        border: 0;
+        display: inline-block;
+        float: left;
+    }
+    .tekstrev {
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 5%;
+        min-width: 96%;
+        padding: 0;
+        border: 0;
+        display: inline-block;
+        float: left;
+    }
+    .tekstrev>h2 {
+        font-size: 80%;
+    }
+    .tekstrev>p {
+        font-size: 80%;
+    }
+    .titlerev>h1 {
+      font-size: 80%;
+    }
+}
+
+.dodrev {
+    font-family: 'Noto Serif';
+    width: 60%;
+    float: left;
+    margin-left: 20%;
+    margin-top: 2%;
+    margin-right: 20%;
+    border: 0;
+    padding: 0;
+    height: 80%;
+}
+
+.unosrev {
+    align-items: baseline;
+    display: block;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    border: 0;
+}
+
+.unosrev>ul {
+    display: none;
+    background-color: #996699;
+    width: 96%;
+    margin: 0;
+    padding: 2%;
+    border: 0;
+    text-align: justify;
+    list-style: none;
+}
+
+.unosrev>ul li {
+    font-size: 110%;
+    font-weight: bold;
+    text-decoration: none;
+    color: #421C52;
+    width: 100%;
+}
+
+.unosrev>label {
+    display: block;
+    font-size: 150%;
+    font-weight: bold;
+    margin-top: 3%;
+    color: #421C52;
+}
+
+.unosrev>input[type="text"] {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin: 0;
+    position: relative;
+    width: 99.4%;
+    border: 1px solid black;
+}
+
+.unosrev>input[type="email"] {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin: 0;
+    position: relative;
+    width: 99.4%;
+    border: 1px solid black;
+}
+
+.unosrev>textarea {
+    width: 99.4%;
+    border: 1px solid black;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-family: 'Noto Serif';
+    overflow: hidden;
+}
+
+.napomene {
+    width: 100%;
+    float: left;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    height: 20%;
+}
+
+.napomene>h3 {
+    width: 96%;
+    float: left;
+    margin: 0;
+    border: 0;
+    padding: 2%;
+    height: 100%;
+    font-family: 'Noto Serif';
+    color: #421C52;
+}
+
+.revbutton {
+    float: left;
+    margin: 0;
+    margin-top: 3%;
+    width: 100%;
+    font-size: 120%;
+    font-family: 'Noto Serif';
+    color: #421C52;
+}
+
+.picbutton {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    float: left;
+    font-size: 105%;
+    font-family: 'Noto Serif';
+    color: #421C52;
+    width: 100%;
+}
+
+.dodkont {
+    font-family: 'Noto Serif';
+    width: 60%;
+    float: left;
+    margin-left: 20%;
+    margin-top: 2%;
+    margin-right: 20%;
+    border: 0;
+    padding: 0;
+    height: 80%;
+}
+
+.unoskont {
+    align-items: baseline;
+    display: block;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    border: 0;
+}
+
+.unoskont>ul {
+    display: none;
+    background-color: #996699;
+    width: 96%;
+    margin: 0;
+    padding: 2%;
+    border: 0;
+    text-align: justify;
+    list-style: none;
+}
+
+.unoskont>ul li {
+    font-size: 110%;
+    font-weight: bold;
+    text-decoration: none;
+    color: #421C52;
+    width: 100%;
+}
+
+.unoskont>label {
+    display: block;
+    margin-top: 3%;
+    font-size: 150%;
+    font-weight: bold;
+    color: #421C52;
+}
+
+.unoskont>input[type="text"] {
+    padding: 0%;
+    margin: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    position: relative;
+    width: 99.4%;
+    border: 1px solid black;
+}
+
+.unoskont>input[type="email"] {
+    padding: 0;
+    margin: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    position: relative;
+    width: 99.4%;
+    border: 1px solid black;
+}
+
+.unoskont>textarea {
+    width: 99.4%;
+    border: 1px solid black;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-family: 'Noto Serif';
+    overflow: hidden;
+}
+
+.konbutton {
+    float: left;
+    margin-bottom: 5%;
+    width: 100%;
+    font-size: 120%;
+    font-family: 'Noto Serif';
+    color: #421C52;
+    margin-top: 3%;
+}
+
+.omeni {
+    float: left;
+    padding: 5%;
+    font-size: 120%;
+    font-family: "Lora";
+    width: 90%;
+    margin: 0;
+    color: #421C52;
+}
+
+.omeni>h1, p {
+    margin: 0;
+    border: 0;
+    width: 100%;
+}
+
+.titlerev {
+    float: left;
+    padding: 2%;
+    font-size: 120%;
+    font-family: "Lora";
+    width: 96%;
+    margin: 0;
+    color: #421C52;
+}
+
+.titlerev>h1 {
+    margin: 0;
+    border: 0;
+    width: 100%;
+}
+
+.par {
+    float: left;
+    padding: 2%;
+    font-size: 120%;
+    font-family: "Noto Serif";
+    width: 96%;
+    margin: 0;
+    border: 0;
+    color: #421C52;
+    word-wrap: break-word;
+}
+
+.par>p {
+    margin: 0;
+    border: 0;
+    width: 100%;
+    font-family: "Noto Serif";
+    word-wrap: break-word;
+}
+
+.revpic {
+    position: relative;
+    float: left;
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 60%;
+    padding: 0;
+    border: 0;
+    color: #421C52;
+}
+
+.revpic>img {
+    width: 100%;
+}
+
+.revpic>img:not(:first-child) {
+    display: none;
+}
+
+.komentar {
+    font-family: 'Noto Serif';
+    width: 60%;
+    float: left;
+    margin-left: 20%;
+    margin-top: 0;
+    margin-right: 20%;
+    border: 0;
+    padding: 0;
+    height: 80%;
+}
+
+.unoskoment {
+    align-items: baseline;
+    display: block;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    border: 0;
+}
+
+.unoskoment>ul {
+    display: none;
+    background-color: #996699;
+    width: 96%;
+    margin: 0;
+    padding: 2%;
+    border: 0;
+    text-align: justify;
+    list-style: none;
+}
+
+.unoskoment>ul li {
+    font-size: 110%;
+    font-weight: bold;
+    text-decoration: none;
+    color: #421C52;
+    width: 100%;
+}
+
+.unoskoment>label {
+    display: block;
+    font-size: 150%;
+    font-weight: bold;
+    margin-top: 3%;
+    color: #421C52;
+}
+
+.forma-komentar>h3 {
+    display: block;
+    font-size: 150%;
+    font-weight: bold;
+    color: #421C52;
+}
+
+.unoskoment>input[type="text"] {
+    padding: 0%;
+    margin: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    position: relative;
+    width: 99.4%;
+    border: 1px solid black;
+}
+
+.unoskoment>textarea {
+    width: 99.4%;
+    border: 1px solid black;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-family: 'Noto Serif';
+    overflow: hidden;
+}
+
+.unoskoment>input[type="range"] {
+    padding: 0;
+    margin: 0;
+    padding-top: 1%;
+    position: relative;
+    width: 99.4%;
+    margin-top: 3%;
+}
+
+.komentbutton {
+    float: left;
+    margin-bottom: 5%;
+    width: 100%;
+    font-size: 120%;
+    font-family: 'Noto Serif';
+    color: #421C52;
+    margin-top: 3%;
+}
+
+.buttonLijevo {
+    position: absolute;
+    top: 45%;
+    font-size: 110%;
+    left: 2%;
+    color: #f1f1f1;
+    font-weight: bold;
+    transition: 0.3s;
+    background-color: transparent;
+    cursor: pointer
+}
+
+.buttonLijevo:hover, .buttonLijevo:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.buttonDesno {
+    position: absolute;
+    top: 45%;
+    right: 2%;
+    color: #f1f1f1;
+    font-size: 110%;
+    font-weight: bold;
+    transition: 0.3s;
+    background-color: transparent;
+    cursor: pointer
+}
+
+.buttonDesno:hover, .buttonDesno:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dots {
+    position: absolute;
+    text-align: center;
+    bottom: 2%;
+    left: 45%;
+}
+
+.dot {
+    cursor: pointer;
+    height: 13px;
+    width: 13px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+
+/* Fading animation */
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+
+
+
+
+.output>h2,a {
+    font-family: 'Lora';
+    margin: 0;
+    padding: 0;
+    border: 0;
+    padding-top: 2%;
+    font-size: 150%;
+    color: #421C52;
+    text-align: justify;
+}
+
+.output a:link {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.output a:visited {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.output a:active {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.output a:hover {
+    color: #421C52;
+    text-decoration: none;
+}
+
+.searchie {
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    border: 0;
+}
+
+.searchie>input[type="text"] {
+    padding: 0%;
+    margin: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    position: relative;
+    width: 70%;
+    border:0;
+    margin-right: 0;
+
+}
+
+.searchbutton{
+  margin: 0;
+  padding:0;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border:0;
+  width: 10%;
+  font-family: 'Noto Serif';
+  color: #421C52;
+  font-size: 60%;
+}
+
+td textarea {
+  width: 99.4%;
+  border: 1px solid black;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  font-family: 'Noto Serif';
+  overflow: hidden;
+  font-size:inherit;
+}
+
+h1{
+  margin-left: 40%;
+  color: #421C52;
+}
+
+.unos{
+  display: block;
+  margin-left: 40%;
+}
+.unos>label{
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+    color: #421C52;
+
+}
+
+
+.unos>input[type="text"], .unos>input[type="password"]{
+  padding: 5px;
+  margin: auto;
+  position: relative;
+  width: 35%;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 150%;
+  color: #421C52;
+}
+
+.dugme{
+  margin-left: 41%;
+  width:20%;
+  font-family: 'Noto Serif';
+  color: #421C52;
+  font-size: 150%
+
+}

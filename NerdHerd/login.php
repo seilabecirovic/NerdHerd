@@ -1,4 +1,11 @@
 <?php
+$db_server= getenv('NHERD_SERVICE_HOST');
+$db_username=getenv('MYSQL_USER');
+$db_pw = getenv('MYSQL_PASSWORD');
+$db = getenv('MYSQL_DATABASE');
+
+?>
+<?php
 session_start();
 if(isset($_POST['action']) && $_POST['action']==="Login"){
 /*  if (file_exists("users.xml"))
@@ -20,7 +27,7 @@ if(isset($_POST['action']) && $_POST['action']==="Login"){
   }*/
   $poslaniUser=htmlspecialchars($_POST['username'])."";
   $poslaniPass=htmlspecialchars($_POST['password'])."";
-      $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+      $veza = new PDO("mysql:dbname=".$db.";host=".$db_server, $db_username, $db_pw);
       $veza->exec("set names utf8");
       $upit = $veza ->query("SELECT id, username, password, button from users where username='".$poslaniUser."'");
       $rezultat = $upit -> fetch();

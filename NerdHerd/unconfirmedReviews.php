@@ -6,6 +6,13 @@ if(!isset($_SESSION['user'])){
 }
 
  ?>
+ <?php
+ $db_server= getenv('NHERD_SERVICE_HOST');
+ $db_username=getenv('MYSQL_USER');
+ $db_pw = getenv('MYSQL_PASSWORD');
+ $db = getenv('MYSQL_DATABASE');
+
+ ?>
 <!DOCTYPE html>
 <html>
 <?php
@@ -15,7 +22,7 @@ if($_POST)
   $keys=array_keys($_POST);
   foreach ($keys as $key => $value) {
     if($_REQUEST[$keys[$key]]=="Delete" || $_REQUEST[$keys[$key]]=="Approve" || $_REQUEST[$keys[$key]]=="Save" || $_REQUEST[$keys[$key]]=="Edit"){
-      $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+      $veza = new PDO("mysql:dbname=".$db.";host=".$db_server, $db_username, $db_pw);
       $veza->exec("set names utf8");
       $veza->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $koji_red=intval(explode("_",$keys[$key])[1]);
@@ -252,7 +259,7 @@ else{
               </tr>
               <?php
               $broj = 0;
-              $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+              $veza = new PDO("mysql:dbname=".$db.";host=".$db_server, $db_username, $db_pw);
               $veza->exec("set names utf8");
                $rez = $veza -> query("SELECT id, name, email, title,text  FROM unconfirmedreviews");
                if ($rez!=false)

@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 if(!isset($_SESSION['user'])){
@@ -5,10 +6,16 @@ if(!isset($_SESSION['user'])){
   die();}
 
  ?>
+ <?php
+ $db_server= getenv('NHERD_SERVICE_HOST');
+ $db_username=getenv('MYSQL_USER');
+ $db_pw = getenv('MYSQL_PASSWORD');
+ $db = getenv('MYSQL_DATABASE');
 
+ ?>
 <?php
 $filename = "messages.csv";
-$veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+$veza = new PDO("mysql:dbname=".$db.";host=".$db_server, $db_username, $db_pw);
 $veza->exec("set names utf8");
 $upit = $veza -> query("SELECT id,name,email,text FROM contacts");
 if($upit!=false){

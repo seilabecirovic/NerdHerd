@@ -1,6 +1,13 @@
 <?php
 session_start();
  ?>
+ <?php
+ $db_server= getenv('NHERD_SERVICE_HOST');
+ $db_username=getenv('MYSQL_USER');
+ $db_pw = getenv('MYSQL_PASSWORD');
+ $db = getenv('MYSQL_DATABASE');
+
+ ?>
 <!DOCTYPE html>
 <html>
 
@@ -51,7 +58,7 @@ session_start();
         <div id="polje">
 <div class="glavne">
   <?php
-  $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+  $veza = new PDO("mysql:dbname=".$db.";host=".$db_server, $db_username, $db_pw);
   $veza->exec("set names utf8");
    $rez = $veza -> query("SELECT id, name, email, title, picture1 FROM reviews");
    if ($rez!=false)

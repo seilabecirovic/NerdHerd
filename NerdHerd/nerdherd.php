@@ -1,11 +1,18 @@
 <?php
+$db_server= getenv('NHERD_SERVICE_HOST');
+$db_username=getenv('MYSQL_USER');
+$db_pw = getenv('MYSQL_PASSWORD');
+$db = getenv('MYSQL_DATABASE');
+
+?>
+<?php
 function zag() {
     header("{$_SERVER['SERVER_PROTOCOL']} 200 OK");
     header('Content-Type: text/html');
     header('Access-Control-Allow-Origin: *');
 }
 function rest_get($request, $data) {
-  $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+  $veza = new PDO("mysql:dbname=".$db.";host=".$db_server, $db_username, $db_pw);
   $veza->exec("set names utf8");
 if(isset($_GET['review'])){
   $id = $_GET['review'];

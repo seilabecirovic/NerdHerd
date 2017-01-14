@@ -7,6 +7,13 @@ if (!$GLOBALS["IHaveCalledSrandBefore"]++) {
   srand((double) microtime() * 1000000);
 }
 ?>
+<?php
+$db_server= getenv('NHERD_SERVICE_HOST');
+$db_username=getenv('MYSQL_USER');
+$db_pw = getenv('MYSQL_PASSWORD');
+$db = getenv('MYSQL_DATABASE');
+
+?>
 <!DOCTYPE html>
 <html>
 <?php
@@ -15,7 +22,7 @@ $posted = false;
   $result = false;
  if( $_POST ) {
    $posted = true;
-   $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+   $veza = new PDO("mysql:dbname=".$db.";host=".$db_server, $db_username, $db_pw);
    $veza->exec("set names utf8");
    $veza->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
    $sql = "INSERT INTO uncomments (revID,name,quality,text)
@@ -111,7 +118,7 @@ $posted = false;
   $prom = '';
   if(isset($_REQUEST['id']) && is_numeric($_REQUEST['id'])){
     $prom=$_REQUEST['id'];
-    $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+    $veza = new PDO("mysql:dbname=".$db.";host=".$db_server, $db_username, $db_pw);
     $veza->exec("set names utf8");
     $upit = $veza -> query("SELECT id,name,email,title,text,picture1,picture2,picture3 FROM reviews where id=".$_GET['id']);
     if($upit!=false){
@@ -200,7 +207,7 @@ $posted = false;
 
     if(isset($_REQUEST['id']) && is_numeric($_REQUEST['id'])){
 
-      $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+      $veza = new PDO("mysql:dbname=".$db.";host=".$db_server, $db_username, $db_pw);
       $veza->exec("set names utf8");
       $upit = $veza -> query("SELECT id,reviID,name,quality,text FROM comments where reviID=".$_GET['id']);
       if($upit!=false){

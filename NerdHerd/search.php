@@ -1,7 +1,13 @@
 <?php
 session_start();
  ?>
+ <?php
+ $db_server= getenv('NHERD_SERVICE_HOST');
+ $db_username=getenv('MYSQL_USER');
+ $db_pw = getenv('MYSQL_PASSWORD');
+ $db = getenv('MYSQL_DATABASE');
 
+ ?>
 <?php
   $brojac=0;
 $output="";
@@ -9,7 +15,7 @@ $output="";
     $searchq=htmlspecialchars($_POST['search']);
     $searchq = preg_replace("#[^0-9a-z]#i","",$searchq);
     $searchq='%'.$searchq.'%';
-    $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+    $veza = new PDO("mysql:dbname=".$db.";host=".$db_server, $db_username, $db_pw);
     $veza->exec("set names utf8");
      $rez = $veza -> prepare ("SELECT id, name, title FROM reviews WHERE name LIKE :nesto OR title LIKE :jedno");
   $rez->execute(array('nesto' => $searchq, 'jedno'=>$searchq));
