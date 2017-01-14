@@ -52,7 +52,7 @@ session_start();
         <div id="polje">
           <div class="glavne">
             <?php
-            $veza = new PDO("mysql:dbname=nerdherd;host=localhost;charset=utf8", "spirala4", "spirala4");
+            $veza = new PDO("mysql:dbname=nhbase;host=nherd-1-oqld9;charset=utf8", "admin", "pass");
             $veza->exec("set names utf8");
              $rezultat = $veza -> query("SELECT id, title, picture1 FROM reviews ORDER BY id desc LIMIT 9");
              if ($rezultat!=null)
