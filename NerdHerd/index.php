@@ -2,6 +2,11 @@
 <?php
 session_start();
  ?>
+<?php
+$db_server= getenv('NHERD_SERVICE_HOST');
+$db_username=getenv('MYSQL_USER');
+$db_pw = getenv('MYSQL_PASSWORD');
+$db = getenv('MYSQL_DATABASE');
 <html>
 
 <head>
@@ -52,7 +57,7 @@ session_start();
         <div id="polje">
           <div class="glavne">
             <?php
-            $veza = new PDO("mysql:dbname=nhbase;host=/opt/rh/rh-mysql56/root/usr;charset=utf8", "admin", "pass");
+            $veza = new PDO("mysql:dbname=".$db.";host=".$db_server, $db_username, $db_pw);
             $veza->exec("set names utf8");
              $rezultat = $veza -> query("SELECT id, title, picture1 FROM reviews ORDER BY id desc LIMIT 9");
              if ($rezultat!=null)
