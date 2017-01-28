@@ -154,7 +154,7 @@ Refresh stranice vraća na početnu stranicu.
 
 -Omogućena je pretraga preko polja naziv recenzije i ime autora.
 
--Urađen je deployment stranice na openshift: http://nerdherdgit-nerdherd.44fs.preview.openshiftapps.com/
+-Urađen je deployment stranice na openshift: http://nerdherdgit-nerdherdfinalni.44fs.preview.openshiftapps.com/index.php
 
 ## II Šta nije urađeno:
 
@@ -258,7 +258,7 @@ Refresh stranice vraća na početnu stranicu.
 
 -Kreiran je web servis, koji vraća json i izvršeno je testiranje istog.
 
--Urađen je deployment stranice na openshift: http://nerdherdgit-nerdherd.44fs.preview.openshiftapps.com/
+-Urađen je deployment stranice na openshift: http://nerdherdgit-nerdherdfinalni.44fs.preview.openshiftapps.com/index.php
 
 ## II Šta nije urađeno:
 
